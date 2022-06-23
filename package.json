@@ -1,0 +1,10 @@
+{
+  "name": "tweeter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/juank1809/twiteer.git",
+  "author": "Juan García <juank1809@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["authentication-service", "design-system", "mock-service", "tweet-data-service", "twitter-ui"]
+}
