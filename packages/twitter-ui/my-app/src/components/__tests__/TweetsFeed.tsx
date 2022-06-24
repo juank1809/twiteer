@@ -36,7 +36,7 @@ test("should render a list of tweets", () => {
   ];
   render(<TweetsFeed tweets={props} />);
 
-  const tweets = screen.getAllByRole("tweet");
+  const tweets = screen.getAllByTestId("tweet");
 
   expect(tweets).toHaveLength(3);
 });
