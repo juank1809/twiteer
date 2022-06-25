@@ -22,6 +22,7 @@ const Tweet: React.FC<TweetProps> = ({
     setHasAlreadyBeenFavorited((prev) => !prev);
 
     const calculateNewFavoriteCount = hasAlreadyBeenFavorited ? -1 : 1;
+
     setNewFavoriteCount((prev) => prev + calculateNewFavoriteCount);
   };
   return (
