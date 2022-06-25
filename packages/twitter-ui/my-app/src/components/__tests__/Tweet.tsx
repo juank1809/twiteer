@@ -1,18 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import Tweet, { TweetProps } from "../Tweet";
 import getUserInitials from "../utils/getUserInitials";
+import user from "@testing-library/user-event";
 
+const props: TweetProps = {
+  user: {
+    fullName: "Christoper Francisco",
+    username: "crhistopher",
+  },
+  message: "I like coding",
+  favoriteCount: 3,
+  replyCount: 2,
+  retweetCount: 1,
+};
 test("should render a tweet with mock data", () => {
-  const props: TweetProps = {
-    user: {
-      fullName: "Christoper Francisco",
-      username: "crhistopher",
-    },
-    message: "I like coding",
-    favoriteCount: 3,
-    replyCount: 2,
-    retweetCount: 1,
-  };
   render(<Tweet {...props} />);
   //counts
   expect(screen.getByTitle(/favorite count/)).toBeInTheDocument();
@@ -31,4 +32,17 @@ test("should render a tweet with mock data", () => {
   expect(
     screen.getByText(getUserInitials(props.user.fullName))
   ).toBeInTheDocument();
+});
+
+test("should aument favorite count", () => {
+  render(<Tweet {...props} />);
+
+  const favoriteCountButton = screen.getByTitle(/favorite count/);
+  user.click(favoriteCountButton);
+
+  expect(favoriteCountButton.textContent).toBe("4");
+
+  user.click(favoriteCountButton);
+
+  expect(favoriteCountButton.textContent).toBe("3");
 });

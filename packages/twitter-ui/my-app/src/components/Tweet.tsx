@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ITweet } from "../types/tweet";
 import getUserInitials from "./utils/getUserInitials";
 import "normalize.css";
@@ -12,6 +12,16 @@ const Tweet: React.FC<TweetProps> = ({
   replyCount,
   retweetCount,
 }) => {
+  const [hasAlreadyBeenFavorited, setHasAlreadyBeenFavorited] =
+    useState<boolean>(false);
+  const [newFavoriteCount, setNewFavoriteCount] = useState(favoriteCount);
+
+  const handleFavoriteClick = () => () => {
+    setHasAlreadyBeenFavorited((prev) => !prev);
+
+    const calculateNewFavoriteCount = hasAlreadyBeenFavorited ? -1 : -1;
+    setNewFavoriteCount((prev) => prev + calculateNewFavoriteCount);
+  };
   return (
     <div data-testid="tweet" className="tweet">
       <div className="tweet__user-container">
@@ -29,8 +39,12 @@ const Tweet: React.FC<TweetProps> = ({
         <span title="retweet count" className="tweet__retweet-count">
           {retweetCount}
         </span>
-        <span title="favorite count" className="tweet__favorite-count">
-          {favoriteCount}
+        <span
+          onClick={handleFavoriteClick()}
+          title="favorite count"
+          className="tweet__favorite-count"
+        >
+          {newFavoriteCount}
         </span>
       </div>
     </div>
