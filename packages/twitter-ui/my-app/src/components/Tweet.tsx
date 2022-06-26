@@ -21,7 +21,7 @@ const Tweet: React.FC<TweetProps> = ({
   const handleFavoriteClick = () => () => {
     setHasAlreadyBeenFavorited((prev) => !prev);
 
-    const calculateNewFavoriteCount = hasAlreadyBeenFavorited ? -1 : -1;
+    const calculateNewFavoriteCount = hasAlreadyBeenFavorited ? -1 : 1;
     setNewFavoriteCount((prev) => prev + calculateNewFavoriteCount);
   };
   return (
@@ -31,7 +31,7 @@ const Tweet: React.FC<TweetProps> = ({
         <div>
           <div className="tweet__user-container">
             <h2 className="tweet__full-name"> {user.fullName} </h2>
-            <span className="tweet__username"> @{user.username} </span>
+            <span className="tweet__username"> {user.username} </span>
           </div>
 
           <div className="tweet__message"> {message} </div>
@@ -48,7 +48,13 @@ const Tweet: React.FC<TweetProps> = ({
               onClick={handleFavoriteClick()}
               className="tweet__favorite-count"
             >
-              <FavoriteBorderOutlinedIcon width={"18px"} /> {newFavoriteCount}
+              <FavoriteBorderOutlinedIcon
+                style={{
+                  fill: hasAlreadyBeenFavorited ? "red" : "",
+                }}
+                width={"18px"}
+              />
+              {newFavoriteCount}
             </span>
           </div>
         </div>

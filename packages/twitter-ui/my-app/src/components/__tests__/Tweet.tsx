@@ -6,7 +6,7 @@ import user from "@testing-library/user-event";
 const props: TweetProps = {
   user: {
     fullName: "Christoper Francisco",
-    username: "crhistopher",
+    username: "@christopher",
   },
   message: "I like coding",
   favoriteCount: 3,
@@ -40,7 +40,7 @@ test("should aument favorite count", () => {
   const favoriteCountButton = screen.getByTitle(/favorite count/);
   user.click(favoriteCountButton);
 
-  expect(favoriteCountButton.textContent).toBe("4");
+  expect(favoriteCountButton.textContent).toMatch(/4/);
 
   user.click(favoriteCountButton);
 
