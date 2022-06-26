@@ -1,5 +1,7 @@
 import "./App.css";
 import "./App.scss";
+import "normalize.css";
+
 import TweetsFeed from "./components/TweetsFeed";
 
 const tweets = [
@@ -18,7 +20,9 @@ const tweets = [
       fullName: "Jaun García",
       username: "juank",
     },
-    message: "I like coding",
+    message: `Her ay 70 TL ücret.
+    Günde 7-8 kere kopma. 
+    3 haftadır her aradığımda "Ekip arkadaşlarımız çalışıyor." yanıtı, sanırım fiber falan döşüyorlar.`,
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,

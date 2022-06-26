@@ -8,18 +8,33 @@ $white: #FFFFFF;
 
 .tweet {
     background-color: $black;
-    width: 600px;
-    height: 130px;
-    margin-bottom: 5px;
+    width: 600px;  
+    font-family: 'Source Sans Pro';
 
+    &:not(:last-child) {
+        border-bottom: 2px solid $gray;
+    }
+
+
+    &__main-container {
+        padding: 10px 15px;
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        column-gap: 10px;
+        grid-template-rows: repeat(1, 1fr);
+    }
     &__full-name  {
         color: $white;
         margin: 0;
+        font-size: 1rem;
+        margin-right: 5px;
     }
 
     &__username {
         color: $gray;
         margin-left: 2px;
+        font-size: 12px;
+        margin-top: 2px;
     }
 
     &__user-container {
@@ -28,7 +43,13 @@ $white: #FFFFFF;
     }
      
     &__message {
+        grid-column: 2/2;
         color: white;
+        font-size: 12px;
+        margin-top: 5px;
+        margin-bottom: 12px;
+        grid-row-start: 2;
+        white-space: pre-line;
     }
 
     &__body {
@@ -39,7 +60,10 @@ $white: #FFFFFF;
         color: $white;
         background-color: gray;
         width: 50px;
+        grid-column: 1/1;
         height: 50px;
+        margin: 0;
+        margin-right: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -50,9 +74,22 @@ $white: #FFFFFF;
     &__count-container {
       display: flex;
       justify-content: space-evenly;
+    
     }
 
     &__reply-count, &__favorite-count, &__retweet-count  {
-      color: $gray
+      color: $gray;
+      font-weight: 400;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+
+      align-items: center;
+
+      svg {
+        margin-right: 3px;
+
+      }
     }
+
 }
