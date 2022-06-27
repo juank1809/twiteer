@@ -2,29 +2,24 @@ import React, { useState } from "react";
 import { ITweet } from "../types/tweet";
 import getUserInitials from "./utils/getUserInitials";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
 
-export interface TweetProps extends ITweet {}
+import RetweetCount from "./TweetCounts/RetweetCount/RetweetCount";
+import FavoriteCount from "./TweetCounts/FavoriteCount/FavoriteCount";
+
+export interface TweetProps {
+  tweet: ITweet;
+  tweets: ITweet[];
+  setTweets: React.Dispatch<React.SetStateAction<ITweet[]>>;
+}
 
 const Tweet: React.FC<TweetProps> = ({
-  user,
-  favoriteCount,
-  message,
-  replyCount,
-  retweetCount,
+  tweet: currentTweet,
+  tweets,
+  setTweets,
 }) => {
-  const [hasAlreadyBeenFavorited, setHasAlreadyBeenFavorited] =
-    useState<boolean>(false);
-  const [newFavoriteCount, setNewFavoriteCount] = useState(favoriteCount);
+  const { favoriteCount, message, replyCount, retweetCount, user } =
+    currentTweet;
 
-  const handleFavoriteClick = () => () => {
-    setHasAlreadyBeenFavorited((prev) => !prev);
-
-    const calculateNewFavoriteCount = hasAlreadyBeenFavorited ? -1 : 1;
-
-    setNewFavoriteCount((prev) => prev + calculateNewFavoriteCount);
-  };
   return (
     <div data-testid="tweet" className="tweet">
       <div className="tweet__main-container">
@@ -41,22 +36,16 @@ const Tweet: React.FC<TweetProps> = ({
             <span title="reply count" className="tweet__reply-count">
               <ModeCommentOutlinedIcon width={"16px"} /> {replyCount}
             </span>
-            <span title="retweet count" className="tweet__retweet-count">
-              <AutorenewIcon width={"18px"} /> {retweetCount}
-            </span>
-            <span
-              title="favorite count"
-              onClick={handleFavoriteClick()}
-              className="tweet__favorite-count"
-            >
-              <FavoriteBorderOutlinedIcon
-                style={{
-                  fill: hasAlreadyBeenFavorited ? "red" : "",
-                }}
-                width={"18px"}
-              />
-              {newFavoriteCount}
-            </span>
+            <RetweetCount
+              tweet={currentTweet}
+              tweets={tweets}
+              setTweets={setTweets}
+            />
+            <FavoriteCount
+              tweet={currentTweet}
+              tweets={tweets}
+              setTweets={setTweets}
+            />
           </div>
         </div>
       </div>

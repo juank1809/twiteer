@@ -4,15 +4,37 @@ import getUserInitials from "../utils/getUserInitials";
 import user from "@testing-library/user-event";
 
 const props: TweetProps = {
-  user: {
-    fullName: "Christoper Francisco",
-    username: "@christopher",
+  tweet: {
+    id: 1,
+    user: {
+      fullName: "Christoper Francisco",
+      username: "@christopher",
+    },
+    message: "I like coding",
+    favoriteCount: 3,
+    replyCount: 2,
+    retweetCount: 1,
+    isAlreadyFavorite: false,
+    isAlreadyRetweeted: true,
   },
-  message: "I like coding",
-  favoriteCount: 3,
-  replyCount: 2,
-  retweetCount: 1,
+  tweets: [
+    {
+      id: 1,
+      user: {
+        fullName: "Christoper Francisco",
+        username: "@christopher",
+      },
+      message: "I like coding",
+      favoriteCount: 3,
+      replyCount: 2,
+      retweetCount: 1,
+      isAlreadyFavorite: false,
+      isAlreadyRetweeted: true,
+    },
+  ],
+  setTweets: jest.fn(),
 };
+
 test("should render a tweet with mock data", () => {
   render(<Tweet {...props} />);
   //counts
@@ -21,16 +43,16 @@ test("should render a tweet with mock data", () => {
   expect(screen.getByTitle(/retweet count/)).toBeInTheDocument();
 
   //user info
-  expect(screen.getByText(props.user.username)).toBeInTheDocument();
+  expect(screen.getByText(props.tweet.user.username)).toBeInTheDocument();
   expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
 
-  expect(screen.getByText(props.message)).toBeInTheDocument();
+  expect(screen.getByText(props.tweet.message)).toBeInTheDocument();
 
   //This acts as our user image for now.
   expect(screen.getByRole("figure")).toBeInTheDocument();
 
   expect(
-    screen.getByText(getUserInitials(props.user.fullName))
+    screen.getByText(getUserInitials(props.tweet.user.fullName))
   ).toBeInTheDocument();
 });
 
@@ -44,5 +66,5 @@ test("should aument favorite count", () => {
 
   user.click(favoriteCountButton);
 
-  expect(favoriteCountButton.textContent).toBe("3");
+  expect(favoriteCountButton.textContent).toBe(/3/);
 });
