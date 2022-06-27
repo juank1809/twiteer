@@ -8,12 +8,15 @@ $white: #FFFFFF;
 
 .tweet {
     background-color: $black;
-    width: 600px;  
+    min-width: 300px;  
+    max-width: 600px;
     font-family: 'Source Sans Pro';
 
     &:not(:last-child) {
         border-bottom: 2px solid $gray;
     }
+
+
 
 
     &__main-container {
