@@ -3,6 +3,10 @@ $black: #000000;
 $gray: #8899A6;
 $white: #FFFFFF;
 
+body {
+    font-family: 'Source Sans Pro';
+
+}
 
 
 
@@ -10,7 +14,6 @@ $white: #FFFFFF;
     background-color: $black;
     min-width: 300px;  
     max-width: 600px;
-    font-family: 'Source Sans Pro';
 
     &:not(:last-child) {
         border-bottom: 2px solid $gray;
@@ -24,7 +27,6 @@ $white: #FFFFFF;
         display: grid;
         grid-template-columns: 50px 1fr;
         column-gap: 10px;
-        grid-template-rows: repeat(1, 1fr);
     }
     &__full-name  {
         color: $white;
@@ -95,4 +97,49 @@ $white: #FFFFFF;
       }
     }
 
+}
+
+.tweet-text-area {
+    min-width: 300px;  
+    max-width: 600px;
+    background-color: $black;
+
+    &__main-container {
+        padding: 10px 15px;
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        column-gap: 12px;
+    }
+
+    figure {
+        color: $white;
+        background-color: gray;
+        width: 40px;
+        grid-column: 1/1;
+        height: 40px;
+        margin: 0;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    &___form-container {
+        position: relative;
+        textarea {
+            background-color: $black;
+        }
+    }
+}
+
+.primary-button {
+    font-weight: 700;
+    color: $white;
+    padding: 15px 32px;
+    background-color: $primary-color;
+    text-decoration: none;
+    text-align: center;
+    line-height: 19px;
+    display: inline-block;
 }
