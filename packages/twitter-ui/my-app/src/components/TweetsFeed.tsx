@@ -55,7 +55,6 @@ const TweetsFeed: React.FC<TweetsFeedProps> = ({}) => {
     const initialValue = inMemoryTweets
       ? JSON.parse(inMemoryTweets)
       : tweetsData;
-    console.log("this is in memor", initialValue);
     return initialValue;
   });
 
