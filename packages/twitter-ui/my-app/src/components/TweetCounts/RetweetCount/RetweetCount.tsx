@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 
 import type { TweetProps } from "../../Tweet";
-import useHandleRetweet from "./useHandleRetweet";
+import useHandleNewTweet from "../../../hooks/useHandleNewTweet";
 
 const RetweetCount: React.FC<TweetProps> = ({ tweet, tweets, setTweets }) => {
   const { retweetCount } = tweet;

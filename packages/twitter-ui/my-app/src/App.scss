@@ -105,7 +105,7 @@ body {
     background-color: $black;
 
     &__main-container {
-        padding: 10px 15px;
+        padding: 18px 10px 10px 15px;
         display: grid;
         grid-template-columns: 40px 1fr;
         column-gap: 12px;
@@ -125,21 +125,48 @@ body {
         border-radius: 50%;
     }
 
-    &___form-container {
+    &__form-container {
         position: relative;
-        textarea {
-            background-color: $black;
+        display: flex;
+        flex-direction: column;
+       
+    }
+
+    
+    &__text-box {
+        background-color: $black;
+        border: none;
+        outline: none;
+        font-size: 19px;
+        line-height: 23px;
+        color: $gray;
+        &:focus + label {
+            opacity: 0;
+            top: -10px;
+            display: none;
         }
+        &__label {
+            font-size: 19px; 
+            line-height: 19px;
+            color: $gray;
+            margin-left: 2px;
+            position: absolute;
+            margin-top:4px;
+        }
+
+       
     }
 }
 
 .primary-button {
     font-weight: 700;
     color: $white;
-    padding: 15px 32px;
+    padding: 10px 31px;
     background-color: $primary-color;
     text-decoration: none;
-    text-align: center;
+    text-align: center; 
+    border-radius: 52px;
     line-height: 19px;
+    align-self: flex-end;
     display: inline-block;
 }

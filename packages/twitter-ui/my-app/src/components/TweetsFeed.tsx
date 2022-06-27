@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { ITweet } from "../types/tweet";
 import Tweet from "./Tweet";
+import TweetTextArea from "./TweetTextArea";
 
 interface TweetsFeedProps {}
 
-const tweetsData = [
+export const tweetsData = [
   {
     id: 1,
     user: {
@@ -60,6 +61,7 @@ const TweetsFeed: React.FC<TweetsFeedProps> = ({}) => {
 
   return (
     <div>
+      <TweetTextArea tweets={tweets} setTweets={setTweets} />
       {tweets.map((tweet, idx) => {
         return (
           <Tweet
