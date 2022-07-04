@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import Tweet, { TweetProps } from "../Tweet";
 import getUserInitials from "../utils/getUserInitials";
 import user from "@testing-library/user-event";
@@ -14,8 +14,6 @@ const props: TweetProps = {
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,
-    isAlreadyFavorite: false,
-    isAlreadyRetweeted: true,
   },
   tweets: [
     {
@@ -28,8 +26,6 @@ const props: TweetProps = {
       favoriteCount: 3,
       replyCount: 2,
       retweetCount: 1,
-      isAlreadyFavorite: false,
-      isAlreadyRetweeted: true,
     },
   ],
   setTweets: jest.fn(),
@@ -56,15 +52,15 @@ test("should render a tweet with mock data", () => {
   ).toBeInTheDocument();
 });
 
-test("should aument favorite count", () => {
+test("should aument and decrease favorite count", async () => {
   render(<Tweet {...props} />);
 
   const favoriteCountButton = screen.getByTitle(/favorite count/);
   user.click(favoriteCountButton);
 
-  expect(favoriteCountButton.textContent).toMatch(/4/);
+  await waitFor(() => expect(favoriteCountButton.textContent).toMatch(/4/));
 
   user.click(favoriteCountButton);
 
-  expect(favoriteCountButton.textContent).toBe(/3/);
+  expect(favoriteCountButton.textContent).toMatch(/3/);
 });

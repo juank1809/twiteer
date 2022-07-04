@@ -8,11 +8,9 @@ export default function useHandleRetweet(
 ) {
   useEffect(() => {
     localStorage.setItem("tweets", JSON.stringify(tweets));
-    console.log(localStorage.getItem("tweets"));
   }, [tweets]);
 
   const handleRetweet = () => {
-    console.log("this should cause rerender");
     setTweets((prev) => [tweetToRetweet, ...prev]);
   };
 

@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 
 import type { TweetProps } from "../../Tweet";
 import useHandleRetweet from "./useHandleRetweet";
 
 const RetweetCount: React.FC<TweetProps> = ({ tweet, tweets, setTweets }) => {
-  const { retweetCount, isAlreadyRetweeted } = tweet;
+  const { retweetCount } = tweet;
   const { handleRetweet } = useHandleRetweet(tweet, tweets, setTweets);
+
+  const [isAlreadyRetweeted, setIsAlreadyRetweeted] = useState<boolean>(false);
+  const [newRetweetCount, setNewRetweetCount] = useState(retweetCount);
+
+  const handleRetweetCount = () => () => {
+    setIsAlreadyRetweeted((prev) => !prev);
+
+    const calculateNewFavoriteCount = isAlreadyRetweeted ? -1 : 1;
+    setNewRetweetCount((prev) => prev + calculateNewFavoriteCount);
+  };
   return (
     <span
       title="retweet count"
       onClick={() => {
         handleRetweet();
+        handleRetweetCount();
       }}
       className="tweet__retweet-count"
     >
@@ -21,7 +32,7 @@ const RetweetCount: React.FC<TweetProps> = ({ tweet, tweets, setTweets }) => {
           fill: isAlreadyRetweeted ? "green" : "",
         }}
       />{" "}
-      {retweetCount}
+      {newRetweetCount}
     </span>
   );
 };

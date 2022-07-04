@@ -41,11 +41,7 @@ const Tweet: React.FC<TweetProps> = ({
               tweets={tweets}
               setTweets={setTweets}
             />
-            <FavoriteCount
-              tweet={currentTweet}
-              tweets={tweets}
-              setTweets={setTweets}
-            />
+            <FavoriteCount favoriteCount={favoriteCount} />
           </div>
         </div>
       </div>

@@ -7,6 +7,4 @@ export interface ITweet {
   favoriteCount: number;
   replyCount: number;
   retweetCount: number;
-  isAlreadyFavorite: boolean;
-  isAlreadyRetweeted: boolean;
 }

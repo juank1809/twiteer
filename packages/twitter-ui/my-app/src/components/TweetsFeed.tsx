@@ -58,7 +58,6 @@ const TweetsFeed: React.FC<TweetsFeedProps> = ({}) => {
     return initialValue;
   });
 
-  console.log(tweets);
   return (
     <div>
       {tweets.map((tweet, idx) => {
