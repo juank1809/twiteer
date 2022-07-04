@@ -2,7 +2,6 @@
     "name": "mock-service",
     "version": "1.0.0",
     "dependencies": {
-        "express": "^4.18.1",
         "cors": "^2.8.5",
         "debug": "^4.3.4",
         "express": "^4.18.1",
@@ -25,7 +24,5 @@
         "dev": "concurrently \"tsc -w\" \"nodemon dist/app.js\"",
         "lint": "eslint . --ext .ts",
         "build": "tsc "
-
     }
-
 }
