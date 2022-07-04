@@ -8,7 +8,7 @@ const tweets = [
   {
     user: {
       fullName: "Christoper Francisco",
-      username: "christopher",
+      username: "@christopher",
     },
     message: "I like coding",
     favoriteCount: 3,
@@ -18,7 +18,7 @@ const tweets = [
   {
     user: {
       fullName: "Jaun García",
-      username: "juank",
+      username: "@juank",
     },
     message: `Her ay 70 TL ücret.
     Günde 7-8 kere kopma. 
@@ -30,7 +30,7 @@ const tweets = [
   {
     user: {
       fullName: "Daniel Fernando",
-      username: "dani",
+      username: "@dani",
     },
     message: "I like coding",
     favoriteCount: 3,
