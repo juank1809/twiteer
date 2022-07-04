@@ -3,17 +3,23 @@ $black: #000000;
 $gray: #8899A6;
 $white: #FFFFFF;
 
+body {
+    font-family: 'Source Sans Pro';
+
+}
 
 
 
 .tweet {
     background-color: $black;
-    width: 600px;  
-    font-family: 'Source Sans Pro';
+    min-width: 300px;  
+    max-width: 600px;
 
     &:not(:last-child) {
         border-bottom: 2px solid $gray;
     }
+
+
 
 
     &__main-container {
@@ -21,7 +27,6 @@ $white: #FFFFFF;
         display: grid;
         grid-template-columns: 50px 1fr;
         column-gap: 10px;
-        grid-template-rows: repeat(1, 1fr);
     }
     &__full-name  {
         color: $white;
@@ -92,4 +97,76 @@ $white: #FFFFFF;
       }
     }
 
+}
+
+.tweet-text-area {
+    min-width: 300px;  
+    max-width: 600px;
+    background-color: $black;
+
+    &__main-container {
+        padding: 18px 10px 10px 15px;
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        column-gap: 12px;
+    }
+
+    figure {
+        color: $white;
+        background-color: gray;
+        width: 40px;
+        grid-column: 1/1;
+        height: 40px;
+        margin: 0;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    &__form-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+       
+    }
+
+    
+    &__text-box {
+        background-color: $black;
+        border: none;
+        outline: none;
+        font-size: 19px;
+        line-height: 23px;
+        color: $gray;
+        &:focus + label {
+            opacity: 0;
+            top: -10px;
+            display: none;
+        }
+        &__label {
+            font-size: 19px; 
+            line-height: 19px;
+            color: $gray;
+            margin-left: 2px;
+            position: absolute;
+            margin-top:4px;
+        }
+
+       
+    }
+}
+
+.primary-button {
+    font-weight: 700;
+    color: $white;
+    padding: 10px 31px;
+    background-color: $primary-color;
+    text-decoration: none;
+    text-align: center; 
+    border-radius: 52px;
+    line-height: 19px;
+    align-self: flex-end;
+    display: inline-block;
 }
