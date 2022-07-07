@@ -1,13 +1,18 @@
 import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
+import { TweetContextProvider } from "../../context/TweetContext";
 import TweetTextArea from "../TweetTextArea";
-import { tweetsData } from "../TweetsFeed";
 
+function renderTweetTextArea() {
+  return render(
+    <TweetContextProvider>
+      <TweetTextArea />
+    </TweetContextProvider>
+  );
+}
 test("should change text in the text area", () => {
-  const setTweets = jest.fn();
-
-  render(<TweetTextArea tweets={tweetsData} setTweets={setTweets} />);
-  const textArea = screen.getByLabelText(/what are you thinking today?/);
+  renderTweetTextArea();
+  const textArea = screen.getByLabelText(/what are you thinking today?/i);
   user.type(textArea, "My first tweet");
 
   expect(textArea).toHaveValue("My first tweet");
