@@ -11,7 +11,8 @@ const newTweetMarkup = {
   favoriteCount: 0,
   retweetCount: 0,
   replyCount: 0,
-};
+  type: "default",
+} as const;
 
 const TweetTextArea: React.FC = () => {
   const [tweetText, setTweetText] = useState("");
