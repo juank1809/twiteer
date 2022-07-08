@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import type { TweetProps } from "../../Tweet";
+import type { TweetProps } from "../../Tweet/Tweet";
 import { useTweets } from "../../../hooks/useTweets";
 
 const FavoriteCount: React.FC<TweetProps> = ({

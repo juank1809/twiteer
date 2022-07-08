@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { TweetContextProvider } from "../../context/TweetContext";
-import TweetTextArea from "../TweetTextArea";
+import TweetTextArea from "../TweetTextArea/TweetTextArea";
 
 function renderTweetTextArea() {
   return render(
