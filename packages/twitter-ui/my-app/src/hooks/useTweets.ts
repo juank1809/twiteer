@@ -35,7 +35,7 @@ export function useTweets() {
   };
 
   const addRetweet = (tweet: ITweet) => {
-    setTweets([tweet, ...tweets]);
+    setTweets([{ ...tweet, id: tweet.id, type: "retweet" }, ...tweets]);
   };
   return {
     tweets,

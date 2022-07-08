@@ -11,6 +11,7 @@ export const tweetsData: ITweet[] = [
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,
+    type: "default",
   },
   {
     id: 2,
@@ -24,6 +25,7 @@ export const tweetsData: ITweet[] = [
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,
+    type: "default",
   },
 
   {
@@ -36,5 +38,6 @@ export const tweetsData: ITweet[] = [
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,
+    type: "default",
   },
 ];
