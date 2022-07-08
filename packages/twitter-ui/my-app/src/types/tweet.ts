@@ -7,4 +7,5 @@ export interface ITweet {
   favoriteCount: number;
   replyCount: number;
   retweetCount: number;
+  type: "default" | "retweet";
 }
