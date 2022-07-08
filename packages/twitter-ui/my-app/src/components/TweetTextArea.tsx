@@ -1,52 +1,47 @@
 import React from "react";
-import IUser from "../types/user";
 import getUserInitials from "./utils/getUserInitials";
 import { useState } from "react";
-import useHandleNewTweet from "../hooks/useHandleNewTweet";
-import { TweetProps } from "./Tweet";
-interface TweetTextAreaProps extends Omit<TweetProps, "tweet"> {}
+import { useTweets } from "../hooks/useTweets";
 
-// Given the situation that we currently do not have a user authentication system, we will just use hardcoded user
-const user: IUser = {
-  fullName: "Christopher Francisco",
-  username: "@christopher",
+const newTweetMarkup = {
+  user: {
+    fullName: "Christopher Francisco",
+    username: "@christopher",
+  },
+  favoriteCount: 0,
+  retweetCount: 0,
+  replyCount: 0,
 };
 
-const TweetTextArea: React.FC<TweetTextAreaProps> = ({ tweets, setTweets }) => {
+const TweetTextArea: React.FC = () => {
   const [tweetText, setTweetText] = useState("");
+  const { tweets, addTweet } = useTweets();
+
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTweetText(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    addTweet({
+      ...newTweetMarkup,
+      id: tweets.length + 1,
+      message: tweetText,
+    });
+    cleanAfterTweet();
   };
 
   const cleanAfterTweet = () => {
     setTweetText("");
   };
 
-  const { handleNewTweet } = useHandleNewTweet(
-    {
-      user,
-      favoriteCount: 0,
-      retweetCount: 0,
-      isAlreadyFavorite: false,
-      isAlreadyRetweeted: false,
-      id: tweets.length + 1,
-      message: tweetText,
-      replyCount: 0,
-    },
-    tweets,
-    setTweets
-  );
-
   return (
     <div className="tweet-text-area">
       <div className="tweet-text-area__main-container">
-        <figure> {getUserInitials(user.fullName)} </figure>
+        <figure> {getUserInitials(newTweetMarkup.user.fullName)} </figure>
         <form
           className="tweet-text-area__form-container"
-          onSubmit={(e) => {
-            cleanAfterTweet();
-            handleNewTweet(e);
-          }}
+          onSubmit={handleSubmit}
         >
           <textarea
             className="tweet-text-area__text-box"

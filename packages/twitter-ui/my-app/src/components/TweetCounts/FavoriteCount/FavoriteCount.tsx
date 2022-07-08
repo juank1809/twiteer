@@ -1,18 +1,18 @@
 import React, { useState } from "react";
+
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import type { ITweet } from "../../../types/tweet";
+import type { TweetProps } from "../../Tweet";
+import { useTweets } from "../../../hooks/useTweets";
 
-type FavoriteCountProps = Pick<ITweet, "favoriteCount">;
-
-const FavoriteCount: React.FC<FavoriteCountProps> = ({ favoriteCount }) => {
+const FavoriteCount: React.FC<TweetProps> = ({
+  tweet: { id, favoriteCount },
+}) => {
   const [isAlreadyFavorite, setIsAlreadyFavorite] = useState<boolean>(false);
-  const [newFavoriteCount, setNewFavoriteCount] = useState(favoriteCount);
+  const { incrementFavorite, decrementFavorite } = useTweets();
 
   const handleFavoriteClick = () => {
     setIsAlreadyFavorite((prev) => !prev);
-
-    const calculateNewFavoriteCount = isAlreadyFavorite ? -1 : 1;
-    setNewFavoriteCount((prev) => prev + calculateNewFavoriteCount);
+    isAlreadyFavorite ? decrementFavorite(id) : incrementFavorite(id);
   };
 
   return (
@@ -27,7 +27,7 @@ const FavoriteCount: React.FC<FavoriteCountProps> = ({ favoriteCount }) => {
         }}
         width={"18px"}
       />
-      {newFavoriteCount}
+      {favoriteCount}
     </span>
   );
 };

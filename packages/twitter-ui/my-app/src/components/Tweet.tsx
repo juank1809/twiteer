@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ITweet } from "../types/tweet";
 import getUserInitials from "./utils/getUserInitials";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
@@ -8,17 +8,10 @@ import FavoriteCount from "./TweetCounts/FavoriteCount/FavoriteCount";
 
 export interface TweetProps {
   tweet: ITweet;
-  tweets: ITweet[];
-  setTweets: React.Dispatch<React.SetStateAction<ITweet[]>>;
 }
 
-const Tweet: React.FC<TweetProps> = ({
-  tweet: currentTweet,
-  tweets,
-  setTweets,
-}) => {
-  const { favoriteCount, message, replyCount, retweetCount, user } =
-    currentTweet;
+const Tweet: React.FC<TweetProps> = ({ tweet }) => {
+  const { message, replyCount, user } = tweet;
 
   return (
     <div data-testid="tweet" className="tweet">
@@ -36,12 +29,8 @@ const Tweet: React.FC<TweetProps> = ({
             <span title="reply count" className="tweet__reply-count">
               <ModeCommentOutlinedIcon width={"16px"} /> {replyCount}
             </span>
-            <RetweetCount
-              tweet={currentTweet}
-              tweets={tweets}
-              setTweets={setTweets}
-            />
-            <FavoriteCount favoriteCount={favoriteCount} />
+            <RetweetCount tweet={tweet} />
+            <FavoriteCount tweet={tweet} />
           </div>
         </div>
       </div>
