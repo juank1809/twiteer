@@ -1,9 +1,9 @@
 import React from "react";
-import { useTweets } from "../hooks/useTweets";
-import Tweet from "./Tweet";
-import TweetTextArea from "./TweetTextArea";
+import { useTweets } from "../../hooks/useTweets";
+import { Tweet } from "../Tweet";
+import { TweetTextArea } from "../TweetTextArea";
 
-const TweetsFeed: React.FC = ({}) => {
+const TweetsFeed: React.FC = () => {
   const { tweets } = useTweets();
   return (
     <div>

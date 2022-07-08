@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import Tweet, { TweetProps } from "../Tweet";
-import getUserInitials from "../utils/getUserInitials";
+import Tweet, { TweetProps } from "../Tweet/Tweet";
+import getUserInitials from "../../utils/getUserInitials";
 import { TweetContextProvider } from "../../context/TweetContext";
 
 const props: TweetProps = {
@@ -14,6 +14,7 @@ const props: TweetProps = {
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,
+    type: "default",
   },
 };
 

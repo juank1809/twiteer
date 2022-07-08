@@ -1,7 +1,7 @@
 import React from "react";
-import getUserInitials from "./utils/getUserInitials";
+import getUserInitials from "../../utils/getUserInitials";
 import { useState } from "react";
-import { useTweets } from "../hooks/useTweets";
+import { useTweets } from "../../hooks/useTweets";
 
 const newTweetMarkup = {
   user: {
