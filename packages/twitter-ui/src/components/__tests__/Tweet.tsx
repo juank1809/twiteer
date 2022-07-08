@@ -1,7 +1,7 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Tweet, { TweetProps } from "../Tweet";
 import getUserInitials from "../utils/getUserInitials";
-import user from "@testing-library/user-event";
+import { TweetContextProvider } from "../../context/TweetContext";
 
 const props: TweetProps = {
   tweet: {
@@ -15,24 +15,18 @@ const props: TweetProps = {
     replyCount: 2,
     retweetCount: 1,
   },
-  tweets: [
-    {
-      id: 1,
-      user: {
-        fullName: "Christoper Francisco",
-        username: "@christopher",
-      },
-      message: "I like coding",
-      favoriteCount: 3,
-      replyCount: 2,
-      retweetCount: 1,
-    },
-  ],
-  setTweets: jest.fn(),
 };
 
+function renderTweet() {
+  return render(
+    <TweetContextProvider>
+      <Tweet {...props} />
+    </TweetContextProvider>
+  );
+}
+
 test("should render a tweet with mock data", () => {
-  render(<Tweet {...props} />);
+  renderTweet();
   //counts
   expect(screen.getByTitle(/favorite count/)).toBeInTheDocument();
   expect(screen.getByTitle(/reply count/)).toBeInTheDocument();
@@ -50,17 +44,4 @@ test("should render a tweet with mock data", () => {
   expect(
     screen.getByText(getUserInitials(props.tweet.user.fullName))
   ).toBeInTheDocument();
-});
-
-test("should aument and decrease favorite count", async () => {
-  render(<Tweet {...props} />);
-
-  const favoriteCountButton = screen.getByTitle(/favorite count/);
-  user.click(favoriteCountButton);
-
-  await waitFor(() => expect(favoriteCountButton.textContent).toMatch(/4/));
-
-  user.click(favoriteCountButton);
-
-  expect(favoriteCountButton.textContent).toMatch(/3/);
 });
