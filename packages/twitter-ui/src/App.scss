@@ -160,6 +160,14 @@ body {
             top: -10px;
             display: none;
         }
+     
+        &:valid + label {
+            opacity: 0;
+            top: -10px;
+            display: none;
+        
+        }
+
         &__label {
             font-size: 19px; 
             line-height: 19px;

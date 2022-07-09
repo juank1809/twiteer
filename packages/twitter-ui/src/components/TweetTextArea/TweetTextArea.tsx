@@ -50,6 +50,7 @@ const TweetTextArea: React.FC = () => {
             value={tweetText}
             onChange={handleChange}
             id="tweet-text-area"
+            required
             rows={3}
             cols={40}
           />
