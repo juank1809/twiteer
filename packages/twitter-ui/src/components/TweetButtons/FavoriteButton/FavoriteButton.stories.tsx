@@ -3,7 +3,7 @@ import { FavoriteButton } from ".";
 import "../../../App.scss";
 
 export default {
-  title: "FavoriteTweetButton",
+  title: "Tweets Buttons",
   component: FavoriteButton,
   argTypes: { onClick: { action: "You just favorited this tweet!" } },
 } as ComponentMeta<typeof FavoriteButton>;

@@ -3,7 +3,7 @@ import { RetweetButton } from ".";
 import "../../../App.scss";
 
 export default {
-  title: "FavoriteTweetButton",
+  title: "Tweets Buttons",
   component: RetweetButton,
   argTypes: { onClick: { action: "You just retweeted this tweet!" } },
 } as ComponentMeta<typeof RetweetButton>;
