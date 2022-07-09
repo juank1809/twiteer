@@ -11,7 +11,7 @@ export interface TweetProps {
 }
 
 const Tweet: React.FC<TweetProps> = ({ tweet }) => {
-  const { message, replyCount, user, type } = tweet;
+  const { id, favoriteCount, message, replyCount, user, type } = tweet;
 
   return (
     <div data-testid="tweet" className="tweet">
@@ -36,7 +36,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
               <ModeCommentOutlinedIcon width={"16px"} /> {replyCount}
             </span>
             <RetweetButton tweet={tweet} />
-            <FavoriteButton tweet={tweet} />
+            <FavoriteButton id={id} favoriteCount={favoriteCount} />
           </div>
         </div>
       </div>

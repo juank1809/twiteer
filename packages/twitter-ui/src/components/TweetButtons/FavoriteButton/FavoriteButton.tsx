@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import type { TweetProps } from "../../Tweet/Tweet";
 import { useTweets } from "../../../hooks/useTweets";
+import { ITweet } from "../../../types/tweet";
 
-const FavoriteCount: React.FC<TweetProps> = ({
-  tweet: { id, favoriteCount },
-}) => {
+export type FavoriteCountProps = Pick<ITweet, "id" | "favoriteCount">;
+
+const FavoriteCount: React.FC<FavoriteCountProps> = ({ id, favoriteCount }) => {
   const [isAlreadyFavorite, setIsAlreadyFavorite] = useState<boolean>(false);
   const { incrementFavorite, decrementFavorite } = useTweets();
 
