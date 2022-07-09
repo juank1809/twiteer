@@ -2,6 +2,7 @@ import React from "react";
 import getUserInitials from "../../utils/getUserInitials";
 import { useState } from "react";
 import { useTweets } from "../../hooks/useTweets";
+import { UserImage } from "../UserImage";
 
 const newTweetMarkup = {
   user: {
@@ -39,7 +40,10 @@ const TweetTextArea: React.FC = () => {
   return (
     <div className="tweet-text-area">
       <div className="tweet-text-area__main-container">
-        <figure> {getUserInitials(newTweetMarkup.user.fullName)} </figure>
+        <UserImage size="medium">
+          {" "}
+          {getUserInitials(newTweetMarkup.user.fullName)}{" "}
+        </UserImage>
         <form
           className="tweet-text-area__form-container"
           onSubmit={handleSubmit}
