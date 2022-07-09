@@ -5,6 +5,7 @@ import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 import { RetweetButton } from "../TweetButtons/RetweetButton";
 import { FavoriteButton } from "../TweetButtons/FavoriteButton";
+import { UserImage } from "../UserImage";
 
 export interface TweetProps {
   tweet: ITweet;
@@ -22,7 +23,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
             <span className="tweet__retweet-message">You Retweeted</span>
           </>
         )}
-        <figure> {getUserInitials(user.fullName)} </figure>
+        <UserImage size="large"> {getUserInitials(user.fullName)} </UserImage>
         <div>
           <div className="tweet__user-container">
             <h2 className="tweet__full-name"> {user.fullName} </h2>

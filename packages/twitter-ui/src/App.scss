@@ -61,19 +61,7 @@ body {
         color: $white
     }
 
-    figure {
-        color: $white;
-        background-color: gray;
-        width: 50px;
-        grid-column: 1/1;
-        height: 50px;
-        margin: 0;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
+   
 
 
     &__count-container {
@@ -126,19 +114,7 @@ body {
         column-gap: 12px;
     }
 
-    figure {
-        color: $white;
-        background-color: gray;
-        width: 40px;
-        grid-column: 1/1;
-        height: 40px;
-        margin: 0;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
+    
 
     &__form-container {
         position: relative;
@@ -192,4 +168,36 @@ body {
     line-height: 19px;
     align-self: flex-end;
     display: inline-block;
+}
+
+.user-image {
+    
+        color: $white;
+        background-color: gray;
+        grid-column: 1/1;
+        height: 50px;
+        margin: 0;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    
+
+        &--small {
+            width: 30px;
+            font-size: 10px;
+            height: 30px;
+        }
+
+        &--medium {
+            width: 40px;
+            height: 40px;
+            font-size: 12px;
+        }
+
+        &--large {
+            width: 50px;
+            height: 50px;
+        }
 }
