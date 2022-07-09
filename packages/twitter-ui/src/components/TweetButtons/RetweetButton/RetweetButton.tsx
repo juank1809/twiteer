@@ -21,10 +21,10 @@ const RetweetCount: React.FC<TweetProps> = ({ tweet }) => {
       <AutorenewIcon
         width={"18px"}
         style={{
-          fill: isAlreadyRetweeted ? "green" : "",
+          fill: isAlreadyRetweeted || tweet.type === "retweet" ? "green" : "",
         }}
       />{" "}
-      {4}
+      {tweet.retweetCount}
     </span>
   );
 };
