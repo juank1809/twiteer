@@ -6,6 +6,7 @@ import AutorenewIcon from "@mui/icons-material/Autorenew";
 import { RetweetButton } from "../TweetButtons/RetweetButton";
 import { FavoriteButton } from "../TweetButtons/FavoriteButton";
 import { UserImage } from "../UserImage";
+import TweetPreview from "./TweetPreview";
 
 export interface TweetProps {
   tweet: ITweet;
@@ -31,7 +32,9 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
           </div>
 
           <div className="tweet__message"> {message} </div>
-
+          {type === "retweet" && message && (
+            <TweetPreview tweet={tweet}></TweetPreview>
+          )}
           <div className="tweet__count-container">
             <span title="reply count" className="tweet__reply-count">
               <ModeCommentOutlinedIcon width={"16px"} /> {replyCount}

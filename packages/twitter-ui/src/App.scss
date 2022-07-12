@@ -5,10 +5,48 @@ $white: #FFFFFF;
 
 body {
     font-family: 'Source Sans Pro';
-
+    
 }
 
 
+
+.tweet-preview {
+    background-color: $black;
+    display:flex;
+    padding: 10px;
+    flex-direction: column;
+    max-width: 100%;
+    margin-bottom: 15px;
+     border: 0.5px solid $gray;
+     border-radius: 20px;
+
+    &__user-container {
+       display: flex;
+
+    }
+    &__username {
+        color: $gray;
+        margin-left: 2px;
+        font-size: 10px;
+        
+        margin-top: 2px;
+    }
+
+    &__full-name  {
+        color: $white;
+        margin: 0;
+        font-size: .8rem;
+        font-weight: 700;
+        margin-right: 5px;
+    }
+
+    &__message {
+        color: white;
+        font-size: 1rem;
+        margin-top: 5px;
+        white-space: pre-line;
+    }
+}
 
 .tweet {
     background-color: $black;
@@ -50,11 +88,12 @@ body {
     &__message {
         grid-column: 2/2;
         color: white;
-        font-size: 12px;
+        font-size: 1rem;
         margin-top: 5px;
         margin-bottom: 12px;
         grid-row-start: 2;
         white-space: pre-line;
+        font-weight: 400;
     }
 
     &__body {
@@ -200,4 +239,16 @@ body {
             width: 50px;
             height: 50px;
         }
+}
+
+.modal {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    width: 40%;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: $black;
 }
