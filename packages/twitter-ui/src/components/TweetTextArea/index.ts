@@ -1,1 +1,1 @@
-export { default as TweetTextArea } from "./TweetTextArea";
+export { default } from "./TweetTextArea";
