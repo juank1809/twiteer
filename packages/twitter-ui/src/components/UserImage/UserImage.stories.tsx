@@ -5,7 +5,6 @@ import "../../App.scss";
 export default {
   title: "User Image",
   component: UserImage,
-  argTypes: { onClick: { action: "You just retweeted this tweet!" } },
 } as ComponentMeta<typeof UserImage>;
 
 const Template: ComponentStory<typeof UserImage> = (args) => (

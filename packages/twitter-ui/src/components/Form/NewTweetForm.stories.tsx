@@ -5,7 +5,6 @@ import { NewTweetForm } from "../Form";
 export default {
   title: "Form",
   component: NewTweetForm,
-  argTypes: { onClick: { action: "You just favorited this tweet!" } },
 } as ComponentMeta<typeof NewTweetForm>;
 
 const Template: ComponentStory<typeof NewTweetForm> = (args) => (
