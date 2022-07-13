@@ -141,7 +141,7 @@ body {
 
 }
 
-.tweet-text-area {
+.new-tweet-form {
     min-width: 300px;  
     max-width: 600px;
     background-color: $black;
@@ -163,51 +163,28 @@ body {
     }
 
     
-    &__text-box {
-        background-color: $black;
-        border: none;
-        outline: none;
-        font-size: 19px;
-        line-height: 23px;
-        color: $gray;
-        &:focus + label {
-            opacity: 0;
-            top: -10px;
-            display: none;
-        }
-     
-        &:valid + label {
-            opacity: 0;
-            top: -10px;
-            display: none;
-        
-        }
-
-        &__label {
-            font-size: 19px; 
-            line-height: 19px;
-            color: $gray;
-            margin-left: 2px;
-            position: absolute;
-            margin-top:4px;
-        }
-
-       
-    }
+  
 }
 
-.primary-button {
+
+.button {
     font-weight: 700;
-    color: $white;
     padding: 10px 31px;
-    background-color: $primary-color;
     text-decoration: none;
-    text-align: center; 
-    border-radius: 52px;
+    text-align: center;     
     line-height: 19px;
-    align-self: flex-end;
     display: inline-block;
+    border-radius: 52px;
+
+    &--primary {
+    color: $white;
+    background-color: $primary-color;
+    }
+
+
+
 }
+
 
 .user-image {
     
@@ -245,10 +222,49 @@ body {
     position: absolute;
     top: 40px;
     left: 40px;
+    width: min-content;
+    height: min-content;
     right: 40px;
     bottom: 40px;
-    width: 40%;
+    display: inline-block;
     border-radius: 20px;
     padding: 20px;
     background-color: $black;
+}
+
+.text-box {
+    background-color: $black;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    line-height: 23px;
+    color: $gray;
+
+    &__container {
+        position: relative;
+    }
+    &:focus + label {
+        opacity: 0;
+        top: -10px;
+        display: none;
+    }
+ 
+    &:valid + label {
+        opacity: 0;
+        top: -10px;
+        display: none;
+    
+    }
+
+    &__label {
+        font-size: 19px; 
+        line-height: 19px;
+        color: $gray;
+        margin-left: 2px;
+        position: absolute;
+        margin-top:4px;
+        left: 0px;
+    }
+
+   
 }
