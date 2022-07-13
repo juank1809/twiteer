@@ -6,5 +6,5 @@
   "author": "Juan García <juank1809@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": ["authentication-service", "design-system", "mock-service", "tweet-data-service", "twitter-ui"]
+  "workspaces": ["packages/*"]
 }

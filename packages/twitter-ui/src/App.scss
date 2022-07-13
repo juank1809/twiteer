@@ -97,6 +97,21 @@ body {
       }
     }
 
+    &__retweet-message {
+        color: $gray;
+        font-size: 14px;
+        font-weight: 600;
+        grid-column: 2 / 2;
+    }
+
+    &__retweet-message-icon {
+        color: $gray;
+        width: 22px !important;
+        margin-left: 30px;
+        margin-top: -5px;
+        margin-bottom: 5px;
+    }
+
 }
 
 .tweet-text-area {
