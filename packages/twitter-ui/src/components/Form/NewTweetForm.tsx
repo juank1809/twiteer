@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useTweets } from "../../hooks/useTweets";
 import { UserImage } from "../UserImage";
 import TweetTextArea from "../TweetTextArea";
-import Button from "../Button";
+import { Button } from "../Button";
 
-const newTweetMarkup = {
+export const newTweetMarkup = {
   user: {
     fullName: "Christopher Francisco",
     username: "@christopher",
@@ -55,8 +55,12 @@ const NewTweetForm: React.FC = () => {
             label="What are you thinking today?"
             handleChange={handleChange}
           />
-
-          <Button type="primary" style={{ alignSelf: "flex-end" }}>
+          <br />
+          <Button
+            buttonType="primary"
+            type="submit"
+            style={{ alignSelf: "flex-end" }}
+          >
             Tweet{" "}
           </Button>
         </form>

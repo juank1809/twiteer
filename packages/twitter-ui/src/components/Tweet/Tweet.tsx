@@ -13,12 +13,12 @@ export interface TweetProps {
 }
 
 const Tweet: React.FC<TweetProps> = ({ tweet }) => {
-  const { id, favoriteCount, message, replyCount, user, type } = tweet;
+  const { id, favoriteCount, message, replyCount, user, type, retweet } = tweet;
 
   return (
     <div data-testid="tweet" className="tweet">
       <div className="tweet__main-container">
-        {type === "retweet" && (
+        {type === "retweet" && !retweet && (
           <>
             <AutorenewIcon className="tweet__retweet-message-icon" />
             <span className="tweet__retweet-message">You Retweeted</span>
@@ -31,8 +31,8 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
             <span className="tweet__username"> {user.username} </span>
           </div>
 
-          <div className="tweet__message"> {message} </div>
-          {type === "retweet" && message && (
+          <div className="tweet__message"> {retweet ? retweet : message} </div>
+          {type === "retweet" && retweet && (
             <TweetPreview tweet={tweet}></TweetPreview>
           )}
           <div className="tweet__count-container">

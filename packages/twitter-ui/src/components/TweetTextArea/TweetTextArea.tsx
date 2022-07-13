@@ -26,7 +26,6 @@ const TweetTextArea: React.FC<TweetTextAreaProps> = ({
         name={name}
         value={value}
         onChange={handleChange}
-        required
         rows={3}
         cols={40}
       />

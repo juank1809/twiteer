@@ -1,17 +1,17 @@
 import React from "react";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  type: "primary";
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  buttonType: "primary";
   children: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  type = "primary",
+  buttonType = "primary",
   children,
   ...props
 }) => {
   return (
-    <button type="submit" className={`button button--${type}`} {...props}>
+    <button className={`button button--${buttonType}`} {...props}>
       {children}
     </button>
   );
