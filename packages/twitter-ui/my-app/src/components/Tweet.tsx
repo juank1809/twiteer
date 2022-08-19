@@ -2,7 +2,7 @@ import React from "react";
 import { ITweet } from "../types/tweet";
 import getUserInitials from "./utils/getUserInitials";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
-
+import AutorenewIcon from "@mui/icons-material/Autorenew";
 import RetweetCount from "./TweetCounts/RetweetCount/RetweetCount";
 import FavoriteCount from "./TweetCounts/FavoriteCount/FavoriteCount";
 
@@ -11,11 +11,17 @@ export interface TweetProps {
 }
 
 const Tweet: React.FC<TweetProps> = ({ tweet }) => {
-  const { message, replyCount, user } = tweet;
+  const { message, replyCount, user, type } = tweet;
 
   return (
     <div data-testid="tweet" className="tweet">
       <div className="tweet__main-container">
+        {type === "retweet" && (
+          <>
+            <AutorenewIcon className="tweet__retweet-message-icon" />
+            <span className="tweet__retweet-message">You Retweeted</span>
+          </>
+        )}
         <figure> {getUserInitials(user.fullName)} </figure>
         <div>
           <div className="tweet__user-container">
