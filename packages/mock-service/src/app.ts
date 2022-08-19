@@ -1,9 +1,10 @@
 import express from "express";
-import router from "./routes/tweetsRouter";
+import tweetController from "./controllers/tweets.controller";
 
 const app = express();
 const port = 3000;
 
-app.use("/", router);
+app.use(express.json());
+app.use("/", tweetController);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`));
