@@ -1,17 +1,17 @@
 import React from "react";
-import { ITweet } from "../types/tweet";
-import getUserInitials from "./utils/getUserInitials";
+import { ITweet } from "../../types/tweet";
+import getUserInitials from "../../utils/getUserInitials";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
-import RetweetCount from "./TweetCounts/RetweetCount/RetweetCount";
-import FavoriteCount from "./TweetCounts/FavoriteCount/FavoriteCount";
+import { RetweetButton } from "../TweetButtons/RetweetButton";
+import { FavoriteButton } from "../TweetButtons/FavoriteButton";
 
 export interface TweetProps {
   tweet: ITweet;
 }
 
 const Tweet: React.FC<TweetProps> = ({ tweet }) => {
-  const { message, replyCount, user, type } = tweet;
+  const { id, favoriteCount, message, replyCount, user, type } = tweet;
 
   return (
     <div data-testid="tweet" className="tweet">
@@ -35,8 +35,8 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
             <span title="reply count" className="tweet__reply-count">
               <ModeCommentOutlinedIcon width={"16px"} /> {replyCount}
             </span>
-            <RetweetCount tweet={tweet} />
-            <FavoriteCount tweet={tweet} />
+            <RetweetButton tweet={tweet} />
+            <FavoriteButton id={id} favoriteCount={favoriteCount} />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
-import getUserInitials from "./utils/getUserInitials";
+import getUserInitials from "../../utils/getUserInitials";
 import { useState } from "react";
-import { useTweets } from "../hooks/useTweets";
+import { useTweets } from "../../hooks/useTweets";
 
 const newTweetMarkup = {
   user: {
@@ -50,6 +50,7 @@ const TweetTextArea: React.FC = () => {
             value={tweetText}
             onChange={handleChange}
             id="tweet-text-area"
+            required
             rows={3}
             cols={40}
           />
