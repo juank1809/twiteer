@@ -4,12 +4,12 @@ import "normalize.css";
 
 import { TweetsFeed } from "./components/TweetsFeed";
 import { TweetContextProvider } from "./context/TweetContext";
-import { TweetTextArea } from "./components/TweetTextArea";
+import { NewTweetForm } from "./components/Form";
 
 function App() {
   return (
     <TweetContextProvider>
-      <TweetTextArea />
+      <NewTweetForm />
       <TweetsFeed />
     </TweetContextProvider>
   );

@@ -1,14 +1,54 @@
 $primary-color: #1DA1F2;
 $black: #000000;
 $gray: #8899A6;
+$black-gray: #2F3336;
+
 $white: #FFFFFF;
 
 body {
     font-family: 'Source Sans Pro';
-
+    
 }
 
 
+
+.tweet-preview {
+    background-color: $black;
+    display:flex;
+    padding: 14px;
+    flex-direction: column;
+    max-width: 100%;
+    margin-bottom: 15px;
+     border: 0.4px solid $black-gray;
+     border-radius: 20px;
+
+    &__user-container {
+       display: flex;
+
+    }
+    &__username {
+        color: $gray;
+        margin-left: 2px;
+        font-size: 10px;
+        
+        margin-top: 2px;
+    }
+
+    &__full-name  {
+        color: $white;
+        margin: 0;
+        font-size: .8rem;
+        font-weight: 700;
+        margin-right: 5px;
+    }
+
+    &__message {
+        color: white;
+        font-size: 1rem;
+        margin-top: 5px;
+        white-space: pre-line;
+    }
+}
 
 .tweet {
     background-color: $black;
@@ -50,30 +90,19 @@ body {
     &__message {
         grid-column: 2/2;
         color: white;
-        font-size: 12px;
+        font-size: 1rem;
         margin-top: 5px;
         margin-bottom: 12px;
         grid-row-start: 2;
         white-space: pre-line;
+        font-weight: 400;
     }
 
     &__body {
         color: $white
     }
 
-    figure {
-        color: $white;
-        background-color: gray;
-        width: 50px;
-        grid-column: 1/1;
-        height: 50px;
-        margin: 0;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
+   
 
 
     &__count-container {
@@ -114,7 +143,7 @@ body {
 
 }
 
-.tweet-text-area {
+.new-tweet-form {
     min-width: 300px;  
     max-width: 600px;
     background-color: $black;
@@ -126,19 +155,7 @@ body {
         column-gap: 12px;
     }
 
-    figure {
-        color: $white;
-        background-color: gray;
-        width: 40px;
-        grid-column: 1/1;
-        height: 40px;
-        margin: 0;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-    }
+    
 
     &__form-container {
         position: relative;
@@ -148,48 +165,109 @@ body {
     }
 
     
-    &__text-box {
-        background-color: $black;
-        border: none;
-        outline: none;
-        font-size: 19px;
-        line-height: 23px;
-        color: $gray;
-        &:focus + label {
-            opacity: 0;
-            top: -10px;
-            display: none;
-        }
-     
-        &:valid + label {
-            opacity: 0;
-            top: -10px;
-            display: none;
-        
-        }
-
-        &__label {
-            font-size: 19px; 
-            line-height: 19px;
-            color: $gray;
-            margin-left: 2px;
-            position: absolute;
-            margin-top:4px;
-        }
-
-       
-    }
+  
 }
 
-.primary-button {
+
+.button {
     font-weight: 700;
-    color: $white;
     padding: 10px 31px;
-    background-color: $primary-color;
     text-decoration: none;
-    text-align: center; 
-    border-radius: 52px;
+    text-align: center;     
     line-height: 19px;
-    align-self: flex-end;
     display: inline-block;
+    border-radius: 52px;
+
+    &--primary {
+    color: $white;
+    background-color: $primary-color;
+    }
+
+
+
+}
+
+
+.user-image {
+    
+        color: $white;
+        background-color: gray;
+        grid-column: 1/1;
+        height: 50px;
+        margin: 0;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    
+
+        &--small {
+            width: 15px;
+            font-size: 10px;
+            height: 15px;
+        }
+
+        &--medium {
+            width: 40px;
+            height: 40px;
+            font-size: 12px;
+        }
+
+        &--large {
+            width: 50px;
+            height: 50px;
+        }
+}
+
+.modal {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: min-content;
+    height: min-content;
+    right: 40px;
+    bottom: 40px;
+    display: inline-block;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: $black;
+}
+
+.text-box {
+    background-color: $black;
+    border: none;
+    outline: none;
+    font-size: 19px;
+    line-height: 23px;
+    color: $white;
+    font-weight: 600;
+
+    &__container {
+        position: relative;
+    }
+    &:focus + label {
+        opacity: 0;
+        top: -10px;
+        display: none;
+    }
+ 
+    &:valid + label {
+        opacity: 0;
+        top: -10px;
+        display: none;
+    
+    }
+
+    &__label {
+        font-size: 19px; 
+        line-height: 19px;
+        color: $gray;
+        margin-left: 2px;
+        position: absolute;
+        margin-top:4px;
+        left: 0px;
+    }
+
+   
 }

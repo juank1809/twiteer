@@ -2,12 +2,12 @@ import { render, screen, waitFor } from "@testing-library/react";
 import user from "@testing-library/user-event";
 import { TweetContextProvider } from "../../context/TweetContext";
 import { TweetsFeed } from "../TweetsFeed";
-import TweetTextArea from "../TweetTextArea/TweetTextArea";
+import { NewTweetForm } from "../Form";
 
-function renderTweetTextArea() {
+function renderNewTweetForm() {
   return render(
     <TweetContextProvider>
-      <TweetTextArea />
+      <NewTweetForm />
     </TweetContextProvider>
   );
 }
@@ -15,17 +15,17 @@ function renderTweetTextArea() {
 const TweetsFeedWithTextArea = () => (
   <TweetContextProvider>
     <div>
-      <TweetTextArea />
+      <NewTweetForm />
       <TweetsFeed />
     </div>
   </TweetContextProvider>
 );
 
-function renderTweetTextAreaAndTweetsFeed() {
+function renderNewTweetFormAndTweetsFeed() {
   return render(<TweetsFeedWithTextArea />);
 }
 test("should change text in the text area", () => {
-  renderTweetTextArea();
+  renderNewTweetForm();
   const textArea = screen.getByLabelText(/what are you thinking today?/i);
   user.type(textArea, "My first tweet");
 
@@ -34,7 +34,7 @@ test("should change text in the text area", () => {
 });
 
 test("should add a tweet from textbox", async () => {
-  renderTweetTextAreaAndTweetsFeed();
+  renderNewTweetFormAndTweetsFeed();
 
   const textArea = screen.getByLabelText(/what are you thinking today?/i);
   const button = screen.getByRole("button", {
