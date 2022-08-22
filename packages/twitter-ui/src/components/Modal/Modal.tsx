@@ -1,7 +1,8 @@
 import React from "react";
 import ReactModal from "react-modal";
 
-ReactModal.setAppElement("#root");
+if (process.env.NODE_ENV !== "test") ReactModal.setAppElement("#root");
+
 interface ModalProps {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
