@@ -2,9 +2,9 @@ import "./App.css";
 import "./App.scss";
 import "normalize.css";
 
-import { TweetsFeed } from "./components/TweetsFeed";
+import { TweetsFeed } from "./features/TweetFeed";
 import { TweetContextProvider } from "./context/TweetContext";
-import { NewTweetForm } from "./components/Form";
+import { NewTweetForm } from "./features/Forms/NewTweetForm";
 
 function App() {
   return (
