@@ -1,7 +1,7 @@
-import { Modal } from ".";
+import { Modal } from "../../../components/Modal";
 import React from "react";
-import { ITweet } from "../../types/tweet";
-import { RetweetForm } from "../Form";
+import { ITweet } from "../../../types/tweet";
+import { RetweetForm } from "./";
 
 interface RetweetModalProps {
   tweet: ITweet;

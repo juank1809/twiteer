@@ -1,7 +1,7 @@
 import React from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-interface TweetTextAreaProps {
+interface TextAreaProps {
   name: string;
   label: string;
   handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -9,7 +9,7 @@ interface TweetTextAreaProps {
   minRows?: number;
 }
 
-const TweetTextArea: React.FC<TweetTextAreaProps> = ({
+const TextArea: React.FC<TextAreaProps> = ({
   name,
   label,
   handleChange,
@@ -36,4 +36,4 @@ const TweetTextArea: React.FC<TweetTextAreaProps> = ({
   );
 };
 
-export default TweetTextArea;
+export default TextArea;

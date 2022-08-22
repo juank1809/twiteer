@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import "../../App.scss";
-import { NewTweetForm } from "../Form";
+import { NewTweetForm } from ".";
 
 export default {
   title: "Form",
