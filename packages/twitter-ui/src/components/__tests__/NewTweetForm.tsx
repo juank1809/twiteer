@@ -24,6 +24,7 @@ const TweetsFeedWithTextArea = () => (
 function renderNewTweetFormAndTweetsFeed() {
   return render(<TweetsFeedWithTextArea />);
 }
+
 test("should change text in the text area", () => {
   renderNewTweetForm();
   const textArea = screen.getByLabelText(/what are you thinking today?/i);

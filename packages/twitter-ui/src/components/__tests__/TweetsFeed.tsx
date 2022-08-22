@@ -27,6 +27,10 @@ test("should retweet a tweet, then a new tweet from text box", async () => {
 
   user.click(toRetweet);
 
+  const retweetWithoutTextOption = screen.getByText(/retweet/i);
+
+  user.click(retweetWithoutTextOption);
+
   await waitFor(() => expect(screen.getAllByTestId("tweet")).toHaveLength(4));
 });
 
