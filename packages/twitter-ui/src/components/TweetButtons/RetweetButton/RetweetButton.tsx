@@ -1,17 +1,14 @@
 import React, { useState } from "react";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
-import { RetweetModal } from "../../components/Modal";
+import { RetweetModal } from "../../Modal";
 import CreateIcon from "@mui/icons-material/Create";
-import type { TweetProps } from "../../components/Tweet/Tweet";
+import type { TweetProps } from "../../Tweet/Tweet";
 import DropDown from "rc-dropdown";
 import Menu, { Item } from "rc-menu";
-import { useTweets } from "../../hooks/useTweets";
+import { useTweets } from "../../../hooks/useTweets";
 import "rc-dropdown/assets/index.css";
 
 const RetweetCount: React.FC<TweetProps> = ({ tweet }) => {
-  /*
-  State of the Modal responsible for quoting a tweet
-  */
   const [isOpen, setIsOpen] = useState(false);
   const { addRetweet } = useTweets();
 

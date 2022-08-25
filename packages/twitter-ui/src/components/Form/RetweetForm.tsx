@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useTweets } from "../../../hooks/useTweets";
-import { ITweet } from "../../../types/tweet";
-import getUserInitials from "../../../utils/getUserInitials";
-import { Button } from "../../../components/Button";
-import { TweetPreview } from "../../Tweet/Tweet";
-import { TextArea } from "../../../components/TextArea";
-import { UserImage } from "../../../components/UserImage";
-import { newTweetMarkup } from "../NewTweetForm/NewTweetForm";
+import { useTweets } from "../../hooks/useTweets";
+import { ITweet } from "../../types/tweet";
+import getUserInitials from "../../utils/getUserInitials";
+import { Button } from "../Button";
+import { TweetPreview } from "../Tweet";
+import TweetTextArea from "../TweetTextArea";
+import { UserImage } from "../UserImage";
+import { newTweetMarkup } from "./NewTweetForm";
 
 interface RetweetFormProps {
   tweet: ITweet;
@@ -37,7 +37,7 @@ const RetweetForm: React.FC<RetweetFormProps> = ({ tweet }) => {
         {getUserInitials(newTweetMarkup.user.fullName)}
       </UserImage>
       <form className="new-tweet-form__form-container" onSubmit={handleSubmit}>
-        <TextArea
+        <TweetTextArea
           name="new-tweet-form"
           value={retweetText}
           minRows={1}
