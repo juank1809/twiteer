@@ -1,5 +1,5 @@
 import { render, screen, cleanup, waitFor } from "@testing-library/react";
-import TweetsFeed from "../TweetsFeed/TweetsFeed";
+import { TweetsFeed } from "../../features/TweetFeed/TweetsFeed";
 import user from "@testing-library/user-event";
 import { TweetContextProvider } from "../../context/TweetContext";
 

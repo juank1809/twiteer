@@ -1,7 +1,7 @@
 import React from "react";
-import getUserInitials from "../../utils/getUserInitials";
-import { UserImage } from "../UserImage";
-import type { TweetProps } from "./Tweet";
+import getUserInitials from "../../../utils/getUserInitials";
+import { UserImage } from "../../../components/UserImage";
+import type { TweetProps } from "../Tweet";
 
 const TweetPreview: React.FC<TweetProps> = ({ tweet: { user, message } }) => {
   return (
