@@ -5,7 +5,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import type { TweetProps } from "../../Tweet";
 import DropDown from "rc-dropdown";
 import Menu, { Item } from "rc-menu";
-import { useTweets } from "../../../../hooks/useTweets";
+import { useTweets } from "../../../../context/TweetContext";
 import "rc-dropdown/assets/index.css";
 
 const RetweetCount: React.FC<TweetProps> = ({ tweet }) => {
