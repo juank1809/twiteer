@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTweets } from "../../../hooks/useTweets";
+import { useTweets } from "../../../context/TweetContext";
 import { ITweet } from "../../../types/tweet";
 import getUserInitials from "../../../utils/getUserInitials";
 import { Button } from "../../../components/Button";

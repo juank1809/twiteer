@@ -1,5 +1,5 @@
 import React from "react";
-import { useTweets } from "../../hooks/useTweets";
+import { useTweets } from "../../context/TweetContext";
 import { Tweet } from "../Tweet";
 
 const TweetsFeed: React.FC = () => {
