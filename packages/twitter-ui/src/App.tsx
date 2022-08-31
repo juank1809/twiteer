@@ -4,7 +4,7 @@ import "normalize.css";
 
 import { TweetsFeed } from "./features/TweetFeed";
 import { TweetContextProvider } from "./context/TweetContext";
-import { NewTweetForm } from "./features/Forms/NewTweetForm";
+import { NewTweetForm } from "./features/new-tweet";
 
 function App() {
   return (

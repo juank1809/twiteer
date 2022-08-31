@@ -3,10 +3,10 @@ import { ITweet } from "../../types/tweet";
 import getUserInitials from "../../utils/getUserInitials";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
-import { RetweetButton } from "./TweetButtons/RetweetButton";
-import { FavoriteButton } from "./TweetButtons/FavoriteButton";
+import { RetweetButton } from "../retweet/retweet-button";
+import { FavoriteButton } from "./favorite-button";
 import { UserImage } from "../../components/UserImage";
-import { TweetPreview } from "./Preview";
+import { TweetPreview } from "./preview";
 
 export interface TweetProps {
   tweet: ITweet;

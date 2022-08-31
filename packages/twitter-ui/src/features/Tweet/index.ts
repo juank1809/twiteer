@@ -1,4 +1,4 @@
 export { default as Tweet } from "./Tweet";
-export { default as TweetPreview } from "./Preview/TweetPreview";
-export { default as FavoriteButton } from "./TweetButtons/FavoriteButton/FavoriteButton";
-export { default as RetweetButton } from "./TweetButtons/RetweetButton/RetweetButton";
+export { default as TweetPreview } from "./preview/TweetPreview";
+export { default as FavoriteButton } from "./favorite-button/FavoriteButton";
+export { default as RetweetButton } from "../retweet/retweet-button/RetweetButton";

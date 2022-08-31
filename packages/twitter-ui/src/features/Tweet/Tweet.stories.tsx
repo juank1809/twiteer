@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Tweet } from "./";
+import { Tweet } from ".";
 import "../../App.scss";
 
 export default {
