@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import { useTweets } from "../../../../context/TweetContext";
-import { ITweet } from "../../../../types/tweet";
+import { useTweets } from "../../../context/TweetContext";
+import { ITweet } from "../../../types/tweet";
 
 export type FavoriteCountProps = Pick<ITweet, "id" | "favoriteCount">;
 

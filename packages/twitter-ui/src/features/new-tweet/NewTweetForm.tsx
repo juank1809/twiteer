@@ -1,10 +1,10 @@
 import React from "react";
-import getUserInitials from "../../../utils/getUserInitials";
+import getUserInitials from "../../utils/getUserInitials";
 import { useState } from "react";
-import { useTweets } from "../../../context/TweetContext";
-import { UserImage } from "../../../components/UserImage";
-import { TextArea } from "../../../components/TextArea";
-import { Button } from "../../../components/Button";
+import { useTweets } from "../../context/TweetContext";
+import { UserImage } from "../../components/UserImage";
+import { TextArea } from "../../components/TextArea";
+import { Button } from "../../components/Button";
 
 export const newTweetMarkup = {
   user: {

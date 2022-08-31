@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
-import { RetweetModal } from "../../../retweet/retweet-form";
+import { RetweetModal } from "../retweet-form";
 import CreateIcon from "@mui/icons-material/Create";
-import type { TweetProps } from "../../Tweet";
+import type { TweetProps } from "../../tweet/Tweet";
 import DropDown from "rc-dropdown";
 import Menu, { Item } from "rc-menu";
-import { useTweets } from "../../../../context/TweetContext";
+import { useTweets } from "../../../context/TweetContext";
 import "rc-dropdown/assets/index.css";
 
 const RetweetCount: React.FC<TweetProps> = ({ tweet }) => {
