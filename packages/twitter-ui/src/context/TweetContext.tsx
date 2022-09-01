@@ -5,7 +5,7 @@ import { tweetsData } from "../tweetsData";
 export const TweetContext =
   createContext<TweetContextValues | undefined>(undefined);
 
-interface TweetContextValues {
+export interface TweetContextValues {
   tweets: ITweet[];
   addTweet: (tweet: ITweet) => void;
   addRetweet: (tweet: ITweet) => void;
