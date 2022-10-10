@@ -1,5 +1,6 @@
 export const tweetsData = [
     {
+      id: 1,
       user: {
         fullName: "Christoper Francisco",
         username: "christopher",
@@ -10,6 +11,7 @@ export const tweetsData = [
       retweetCount: 1,
     },
     {
+      id: 2,
       user: {
         fullName: "Jaun García",
         username: "juank",
@@ -20,6 +22,7 @@ export const tweetsData = [
       retweetCount: 1,
     },
     {
+      id: 3,
       user: {
         fullName: "Daniel Fernando",
         username: "dani",
@@ -27,6 +30,6 @@ export const tweetsData = [
       message: "I like coding",
       favoriteCount: 3,
       replyCount: 2,
-      retweetCount: 1,
-    },
-  ];
+      retweetCount: 1,  
+    }
+];
