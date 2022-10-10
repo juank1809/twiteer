@@ -2,7 +2,7 @@ import "./App.css";
 import "./App.scss";
 import "normalize.css";
 
-import { TweetsFeed } from "./features/TweetFeed";
+import { TweetsFeed } from "./features/tweet-feed";
 import { TweetContextProvider } from "./context/TweetContext";
 import { NewTweetForm } from "./features/new-tweet";
 
