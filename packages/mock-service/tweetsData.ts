@@ -30,6 +30,6 @@ export const tweetsData = [
       message: "I like coding",
       favoriteCount: 3,
       replyCount: 2,
-      retweetCount: 1,
-    },
-  ];
+      retweetCount: 1,  
+    }
+];
