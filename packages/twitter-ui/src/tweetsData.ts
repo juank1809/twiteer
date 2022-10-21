@@ -7,7 +7,7 @@ export const tweetsData: ITweet[] = [
       fullName: "Christoper Francisco",
       username: "@christopher",
     },
-    message: "I like coding",
+    message: "I like surfing",
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,
