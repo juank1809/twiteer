@@ -2,8 +2,9 @@ import { createContext, useContext, useState } from "react";
 import { ITweet } from "../types/tweet";
 import { tweetsData } from "../tweetsData";
 
-export const TweetContext =
-  createContext<TweetContextValues | undefined>(undefined);
+export const TweetContext = createContext<TweetContextValues | undefined>(
+  undefined
+);
 
 export interface TweetContextValues {
   tweets: ITweet[];
