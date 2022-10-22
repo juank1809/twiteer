@@ -5,9 +5,9 @@ export const tweetsData = [
         fullName: "Christoper Francisco",
         username: "christopher",
       },
-      message: "I like coding",
+      message: "I like surfing!",
       favoriteCount: 3,
-      replyCount: 2,
+      replyCount: 2, 
       retweetCount: 1,
     },
     {
@@ -18,8 +18,8 @@ export const tweetsData = [
       },
       message: "I like coding",
       favoriteCount: 3,
-      replyCount: 2,
-      retweetCount: 1,
+      replyCount: 2, 
+      retweetCount: 1, 
     },
     {
       id: 3,
