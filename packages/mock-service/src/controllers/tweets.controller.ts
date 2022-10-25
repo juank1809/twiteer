@@ -27,4 +27,19 @@ router.post("retweet", (req: Request, res: Response) => {
   res.send(tweetsData);
 });
 
+router.post("favorite", (req: Request, res: Response) => {
+  const tweetId = req.body.tweet.id;
+
+  tweetsData.map((tweet) => {
+    tweet.id === tweetId
+      ? {
+          ...tweet,
+          favoriteCount: tweet.favoriteCount + 1,
+        }
+      : tweet;
+  });
+
+  return res.send(tweetsData);
+});
+
 export default router;
