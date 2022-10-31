@@ -20,8 +20,8 @@
         "prettier": "^2.7.1"
     },
     "scripts": {
-        "start": "node dist/app.js",
-        "dev": "concurrently \"tsc -w\" \"nodemon dist/app.js\"",
+        "start": "node dist/src/app.js",
+        "dev": "concurrently \"tsc -w\" \"nodemon dist/src/app.js\"",
         "lint": "eslint . --ext .ts",
         "build": "tsc "
     }
