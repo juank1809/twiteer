@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { Modal } from "../../../components/Modal";
-import "../../App.scss";
+import "../../../App.scss";
 import { RetweetModal } from "./";
 
 export default {

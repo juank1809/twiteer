@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { FavoriteButton } from ".";
 import "../../../App.scss";
+import { tweetsData } from "../../../tweetsData";
 
 export default {
   title: "Tweets Buttons",
@@ -15,6 +16,5 @@ const Template: ComponentStory<typeof FavoriteButton> = (args) => (
 export const NormalFavoriteButton = Template.bind({});
 
 NormalFavoriteButton.args = {
-  id: 1,
-  favoriteCount: 3,
+  tweet: tweetsData[0],
 };

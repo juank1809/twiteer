@@ -3,7 +3,7 @@ import "../../App.scss";
 import { Button } from ".";
 
 export default {
-  title: "Form",
+  title: "Button",
   component: Button,
   argTypes: { onClick: { action: "You just clicked the button!" } },
 } as ComponentMeta<typeof Button>;
@@ -14,4 +14,5 @@ export const NormalButton = Template.bind({});
 
 NormalButton.args = {
   buttonType: "primary",
+  children: "Tweet",
 };
