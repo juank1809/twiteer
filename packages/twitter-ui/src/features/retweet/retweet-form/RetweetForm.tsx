@@ -21,14 +21,11 @@ const RetweetForm: React.FC<RetweetFormProps> = ({ tweet }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (retweetText) {
-      addRetweet({
-        ...tweet,
-        retweet: retweetText,
-      });
-      return;
-    }
-    addRetweet(tweet);
+    addRetweet({
+      ...tweet,
+      retweet: retweetText,
+    });
+    setRetweetText("");
   };
 
   return (
