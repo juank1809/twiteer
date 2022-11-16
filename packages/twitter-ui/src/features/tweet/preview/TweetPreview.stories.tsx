@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { TweetPreview } from ".";
-import "../../App.scss";
+import "../../../App.scss";
 
 export default {
   title: "Tweet",
