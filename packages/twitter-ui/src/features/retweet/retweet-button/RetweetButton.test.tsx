@@ -1,25 +1,23 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {
-  customTweetContextRender,
-  dummyTweet,
-} from "../../../utils/test-utils";
-import RetweetButton from "./RetweetButton";
+import { customTweetContextRender } from "../../../utils/test-utils";
+import { TweetsFeed } from "../../tweet-feed";
 
-it("should open Tweet Menu", async () => {
-  /* all the props here are dummy objects */
-  customTweetContextRender(<RetweetButton tweet={dummyTweet} />, {
-    providerProps: { addRetweet: jest.fn() },
-  });
+it("should retweet without text", async () => {
+  customTweetContextRender(
+    <>
+      <TweetsFeed />
+    </>
+  );
 
-  const tweetButton = screen.getByTitle(/retweet/i);
-
+  // Find the first tweet, get and the retweet button of that tweet.
+  const tweetButton = screen.getAllByTitle(/retweet/i)[0];
   userEvent.click(tweetButton);
 
-  const retweetWithoutQuoteOption = await screen.findByText(/retweet/i);
+  // Select retweet without quote option
+  const tweetWithoutQuoteOption = await screen.findByText(/retweet/i);
+  userEvent.click(tweetWithoutQuoteOption);
 
-  userEvent.click(retweetWithoutQuoteOption);
-
-  expect(screen.getByText(/retweet/i)).toBeInTheDocument();
-  expect(screen.getByText(/quote tweet/i)).toBeInTheDocument();
+  expect(screen.getAllByTestId("tweet")).toHaveLength(4);
+  expect(screen.getByText(/you retweeted/i)).toBeInTheDocument();
 });

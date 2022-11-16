@@ -1,29 +1,22 @@
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { ITweet } from "../../../types/tweet";
-import {
-  customTweetContextRender,
-  dummyTweet as tweetToRetweet,
-} from "../../../utils/test-utils";
+import { tweetsData } from "../../../tweetsData";
+import { customTweetContextRender } from "../../../utils/test-utils";
+import { TweetsFeed } from "../../tweet-feed";
 import RetweetForm from "./RetweetForm";
 
 it("should retweet with text", () => {
-  let tweetsFeed: ITweet[] = [];
+  customTweetContextRender(
+    <>
+      <RetweetForm tweet={tweetsData[0]} />
+      <TweetsFeed />
+    </>
+  );
 
-  const addRetweetWithQuoteImplementation = (tweet: ITweet) => {
-    tweetsFeed = [
-      { ...tweet, type: "retweet", retweet: "I'm quoting a retweet" },
-      ...tweetsFeed,
-    ];
-  };
+  const RETWEET_QUOTE = "I'm quoting this retweet";
 
-  const providerProps = {
-    addRetweet: jest.fn(addRetweetWithQuoteImplementation),
-  };
-
-  customTweetContextRender(<RetweetForm tweet={tweetToRetweet} />, {
-    providerProps: providerProps,
-  });
+  const form = screen.getByLabelText(/add a comment/i);
+  userEvent.type(form, RETWEET_QUOTE);
 
   const retweetButton = screen.getByRole("button", {
     name: /tweet/i,
@@ -31,8 +24,8 @@ it("should retweet with text", () => {
 
   userEvent.click(retweetButton);
 
-  expect(providerProps.addRetweet).toHaveBeenCalled();
-  expect(providerProps.addRetweet).toHaveBeenCalledWith(tweetToRetweet);
-  expect(tweetsFeed[0].type).toBe("retweet");
-  expect(tweetsFeed[0].retweet).toBeTruthy();
+  const tweetsFeed = screen.getAllByTestId("tweet");
+
+  expect(tweetsFeed).toHaveLength(4);
+  expect(screen.getByText(RETWEET_QUOTE)).toBeInTheDocument();
 });

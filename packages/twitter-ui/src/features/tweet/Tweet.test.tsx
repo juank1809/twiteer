@@ -1,12 +1,13 @@
 import { screen } from "@testing-library/react";
 import Tweet from "./Tweet";
-import { customTweetContextRender, dummyTweet } from "../../utils/test-utils";
+import { customTweetContextRender } from "../../utils/test-utils";
 import getUserInitials from "../../utils/getUserInitials";
+import { tweetsData } from "../../tweetsData";
 
 it("should render a tweet with mock data", () => {
-  customTweetContextRender(<Tweet tweet={dummyTweet} />, {
-    providerProps: { tweets: [] },
-  });
+  const dummyTweet = tweetsData[0];
+
+  customTweetContextRender(<Tweet tweet={dummyTweet} />);
   //counts
   expect(screen.getByTitle(/favorite count/)).toBeInTheDocument();
   expect(screen.getByTitle(/reply count/)).toBeInTheDocument();
