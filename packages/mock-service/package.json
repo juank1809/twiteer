@@ -2,6 +2,7 @@
     "name": "mock-service",
     "version": "1.0.0",
     "dependencies": {
+        "@pact-foundation/pact": "latest",
         "cors": "^2.8.5",
         "debug": "^4.3.4",
         "express": "^4.18.1",
