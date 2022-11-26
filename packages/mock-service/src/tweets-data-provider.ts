@@ -3,7 +3,7 @@ export const tweetsData: ITweet[] = [
     id: 1,
     user: {
       fullName: "Christoper Francisco",
-      username: "christopher",
+      username: "@christopher",
     },
     message: "I like surfing!",
     favoriteCount: 3,
@@ -17,7 +17,9 @@ export const tweetsData: ITweet[] = [
       fullName: "Jaun García",
       username: "juank",
     },
-    message: "I like coding",
+    message:  `Her ay 70 TL ücret.
+    Günde 7-8 kere kopma. 
+    3 haftadır her aradığımda "Ekip arkadaşlarımız çalışıyor." yanıtı, sanırım fiber falan döşüyorlar.`,
     favoriteCount: 3,
     replyCount: 2,
     retweetCount: 1,
@@ -27,7 +29,7 @@ export const tweetsData: ITweet[] = [
     id: 3,
     user: {
       fullName: "Daniel Fernando",
-      username: "dani",
+      username: "@dani",
     },
     message: "I like coding",
     favoriteCount: 3,
