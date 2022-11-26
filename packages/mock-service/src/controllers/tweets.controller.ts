@@ -23,52 +23,51 @@ router.use("/", (req: Request, res: Response, next: NextFunction) => {
   GETRouteTweetsDataProvider the return the stored data.
   */
   if (req.method === "GET" && getGetRouteTweetsData()) {
-    console.log("hello", getGetRouteTweetsData());
     return res.json(getGetRouteTweetsData());
   } else if (
     req.method === "POST" &&
     req.baseUrl === "/tweets" &&
     getGetRouteTweetsData()
   ) {
-    return res.send(getPostRouteTweetsData());
+    return res.json(getPostRouteTweetsData());
   } else if (
     req.method === "POST" &&
     req.baseUrl === "/retweet" &&
     getRetweetRouteTweetsData()
   ) {
-    return res.send(getRetweetRouteTweetsData());
+    return res.json(getRetweetRouteTweetsData());
   } else if (req.method === "PUT" && getFavoriteRouteTweetsData()) {
-    return res.send(getFavoriteRouteTweetsData());
+    return res.json(getFavoriteRouteTweetsData());
   }
   next();
 });
 
-router.get("/tweets", (req: Request, res: Response, _: NextFunction) => {
-  res.send(tweetsData);
+router.get("/", (_req: Request, res: Response,) => {
+  res.json(tweetsData);
 });
 
-router.post("/tweets", (req: Request, res: Response, _: NextFunction) => {
-  tweetsData.push(req.body);
-  res.send(tweetsData);
+router.post("/", (req: Request, res: Response) => {
+  tweetsData.unshift(req.body);
+  res.json(tweetsData);
 });
 
-router.post("retweet", (req: Request, res: Response) => {
-  const tweetId = req.body.tweet.id;
+router.post("/retweet/:id", (req: Request, res: Response) => {
+  const tweetId = parseInt(req.params.id);
   const toRetweet = tweetsData.find((tweet) => tweet.id === tweetId);
 
   if (!toRetweet) {
-    return res.status(404).send({
+    return res.status(404).json({
       error: "Tweet to retweet not found!",
     });
   }
 
-  tweetsData.push(toRetweet);
+  tweetsData.unshift(toRetweet);
 
-  res.send(tweetsData);
+  res.json(tweetsData);
 });
 
-router.post("favorite", (req: Request, res: Response) => {
-  const tweetId = req.body.tweet.id;
+router.post("/favorite/:id", (req: Request, res: Response) => {
+  const tweetId = parseInt(req.params.id)
 
   tweetsData.map((tweet) => {
     tweet.id === tweetId
@@ -79,7 +78,9 @@ router.post("favorite", (req: Request, res: Response) => {
       : tweet;
   });
 
-  return res.send(tweetsData);
+  
+
+  return res.json(tweetsData);
 });
 
 /* This helper route allow us to change different route data methods 
@@ -91,7 +92,7 @@ router.put("/server-state", (req: Request, res: Response) => {
     case "get.tweets":
       console.log("is this being run");
       setGetRouteTweetsData(value);
-      return res.send(getGetRouteTweetsData());
+      return res.json(getGetRouteTweetsData());
       break;
     case "post.tweets":
       setPostRouteTweetsData(value);
