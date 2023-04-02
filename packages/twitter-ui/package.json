@@ -34,7 +34,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "test:pact": "CI=true react-scripts test --testTimeout 30000 api.pact.spec.js"
   },
   "eslintConfig": {
     "overrides": [
