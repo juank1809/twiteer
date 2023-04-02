@@ -23,7 +23,7 @@ jobs:
           yarn run test:pact
       - uses: rajnavakotiikea/publish-pacts@v1.0.1
         with:
-        pact_file_dir: ${PWD}/pacts
+        pact_file_dir: packages/twitter-ui/pacts
         consumer_app_version: ${{ github.sha }}
         tag: ${{ github.ref_name }}
         broker_base_url: https://juank180999.pactflow.io/
