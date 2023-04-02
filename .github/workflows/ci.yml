@@ -23,12 +23,11 @@ jobs:
           yarn run test:pact
       - uses: rajnavakotiikea/publish-pacts@v1.0.1
         with:
-        pact_file_dir: packages/twitter-ui/pacts
-        consumer_app_version: ${{ github.sha }}
-        tag: ${{ github.ref_name }}
-        broker_base_url: https://juank180999.pactflow.io/
-        broker_token: ${{ secrets.PACTFLOW_TOKEN }}
-
+          pact_file_dir: packages/twitter-ui/pacts
+          consumer_app_version: ${{ github.sha }}
+          tag: ${{ github.ref_name }}
+          broker_base_url: https://juank180999.pactflow.io/
+          broker_token: ${{ secrets.PACTFLOW_TOKEN }}
 
   can-i-deploy:
     runs-on: ubuntu-latest
@@ -48,4 +47,4 @@ jobs:
       - run: docker pull pactfoundation/pact-cli:latest
       - name: Deploy
         run: GIT_BRANCH=${GIT_REF:11} make deploy
-        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/test'
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test'
