@@ -26,6 +26,7 @@
         "dev": "concurrently \"tsc -w\" \"nodemon dist/src/app.js\"",
         "lint": "eslint . --ext .ts",
         "build": "tsc ",
-        "test:pact": "npx jest --testTimeout 30000 --testMatch \"**/*.pact.test.js\""
+        "test:pact": "npx jest --testTimeout 30000 --testMatch \"**/*.pact.test.ts\""
+
     }
 }
