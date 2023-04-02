@@ -27,5 +27,6 @@
         "lint": "eslint . --ext .ts",
         "build": "tsc ",
         "test:pact": "npx jest --testTimeout 30000 --testMatch \"**/*.pact.test.ts\""
+
     }
 }

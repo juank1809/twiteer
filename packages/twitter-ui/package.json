@@ -36,6 +36,7 @@
     "build-storybook": "build-storybook -s public",
     "cypress:open": "cypress open",
     "test:pact": "CI=true react-scripts test --testTimeout 30000 api.pact.spec.ts"
+
   },
   "eslintConfig": {
     "overrides": [
