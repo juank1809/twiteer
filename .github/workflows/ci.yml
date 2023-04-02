@@ -21,14 +21,13 @@ jobs:
           cd mock-service
           yarn install
           yarn run test:pact
-      - uses: rajnavakotiikea/publish-pacts@v1.0.1
+      - name: Publish Pact Tests to Pactflow
+        uses: pact-foundation/pact-publish-action@master
         with:
-        pact_file_dir: ${PWD}/pacts
-        consumer_app_version: ${{ github.sha }}
-        tag: ${{ github.ref_name }}
-        broker_base_url: https://juank180999.pactflow.io/
-        broker_token: ${{ secrets.PACTFLOW_TOKEN }}
-
+          pact_broker_url: https://juank180999.pactflow.io/
+          pact_broker_token: ${{ secrets.PACTFLOW_TOKEN }}
+          consumer_app_version: ${{ github.sha }}
+          pact_files: packages/twitter-ui/pacts/*.json,provider/pacts/*.json
 
   can-i-deploy:
     runs-on: ubuntu-latest
