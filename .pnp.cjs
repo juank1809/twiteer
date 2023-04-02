@@ -1309,7 +1309,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@types/jest",\
-        "npm:29.5.0"\
+        "npm:27.5.2"\
       ],\
       [\
         "@types/json-schema",\
@@ -2114,6 +2114,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "browserslist",\
         "npm:4.21.1"\
+      ],\
+      [\
+        "bs-logger",\
+        "npm:0.2.6"\
       ],\
       [\
         "bser",\
@@ -4416,6 +4420,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "npm:3.1.0"\
       ],\
       [\
+        "make-error",\
+        "npm:1.3.6"\
+      ],\
+      [\
         "make-fetch-happen",\
         "npm:10.2.1"\
       ],\
@@ -6378,6 +6386,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "ts-dedent",\
         "npm:2.2.0"\
+      ],\
+      [\
+        "ts-jest",\
+        "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:29.1.0"\
       ],\
       [\
         "ts-pnp",\
@@ -19108,6 +19120,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["bs-logger", [\
+        ["npm:0.2.6", {\
+          "packageLocation": "./.yarn/cache/bs-logger-npm-0.2.6-7670f88b66-d34bdaf68c.zip/node_modules/bs-logger/",\
+          "packageDependencies": [\
+            ["bs-logger", "npm:0.2.6"],\
+            ["fast-json-stable-stringify", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["bser", [\
         ["npm:2.1.1", {\
           "packageLocation": "./.yarn/cache/bser-npm-2.1.1-cc902055ce-9ba4dc58ce.zip/node_modules/bser/",\
@@ -27042,6 +27064,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["json5", "npm:2.2.1"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:2.2.3", {\
+          "packageLocation": "./.yarn/cache/json5-npm-2.2.3-9962c55073-2a7436a933.zip/node_modules/json5/",\
+          "packageDependencies": [\
+            ["json5", "npm:2.2.3"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["jsonfile", [\
@@ -27611,6 +27640,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["make-dir", "npm:3.1.0"],\
             ["semver", "npm:6.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["make-error", [\
+        ["npm:1.3.6", {\
+          "packageLocation": "./.yarn/cache/make-error-npm-1.3.6-ccb85d9458-b86e5e0e25.zip/node_modules/make-error/",\
+          "packageDependencies": [\
+            ["make-error", "npm:1.3.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -33680,6 +33718,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["lru-cache", "npm:6.0.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:7.3.8", {\
+          "packageLocation": "./.yarn/cache/semver-npm-7.3.8-25a996cb4f-ba9c7cbbf2.zip/node_modules/semver/",\
+          "packageDependencies": [\
+            ["semver", "npm:7.3.8"],\
+            ["lru-cache", "npm:6.0.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["send", [\
@@ -35496,6 +35542,56 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["ts-jest", [\
+        ["npm:29.1.0", {\
+          "packageLocation": "./.yarn/cache/ts-jest-npm-29.1.0-ede119702b-535dc42ad5.zip/node_modules/ts-jest/",\
+          "packageDependencies": [\
+            ["ts-jest", "npm:29.1.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:29.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/ts-jest-virtual-4a9f60cc6e/0/cache/ts-jest-npm-29.1.0-ede119702b-535dc42ad5.zip/node_modules/ts-jest/",\
+          "packageDependencies": [\
+            ["ts-jest", "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:29.1.0"],\
+            ["@babel/core", null],\
+            ["@jest/types", null],\
+            ["@types/babel-jest", null],\
+            ["@types/babel__core", null],\
+            ["@types/esbuild", null],\
+            ["@types/jest", "npm:27.5.2"],\
+            ["@types/jest__types", null],\
+            ["@types/typescript", null],\
+            ["babel-jest", null],\
+            ["bs-logger", "npm:0.2.6"],\
+            ["esbuild", null],\
+            ["fast-json-stable-stringify", "npm:2.1.0"],\
+            ["jest", null],\
+            ["jest-util", "npm:29.5.0"],\
+            ["json5", "npm:2.2.3"],\
+            ["lodash.memoize", "npm:4.1.2"],\
+            ["make-error", "npm:1.3.6"],\
+            ["semver", "npm:7.3.8"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=65a307"],\
+            ["yargs-parser", "npm:21.1.1"]\
+          ],\
+          "packagePeers": [\
+            "@babel/core",\
+            "@jest/types",\
+            "@types/babel-jest",\
+            "@types/babel__core",\
+            "@types/esbuild",\
+            "@types/jest",\
+            "@types/jest__types",\
+            "@types/typescript",\
+            "babel-jest",\
+            "esbuild",\
+            "jest",\
+            "typescript"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["ts-pnp", [\
         ["npm:1.2.0", {\
           "packageLocation": "./.yarn/cache/ts-pnp-npm-1.2.0-43620de7df-c2a698b85d.zip/node_modules/ts-pnp/",\
@@ -35674,6 +35770,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-scripts", "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:5.0.1"],\
             ["react-textarea-autosize", "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:8.3.4"],\
             ["sass", "npm:1.53.0"],\
+            ["ts-jest", "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:29.1.0"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=65a307"],\
             ["web-vitals", "npm:2.1.4"],\
             ["webpack", "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:5.73.0"]\
@@ -37595,6 +37692,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/yargs-parser-npm-21.0.1-b778fd3462-c3ea2ed12c.zip/node_modules/yargs-parser/",\
           "packageDependencies": [\
             ["yargs-parser", "npm:21.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:21.1.1", {\
+          "packageLocation": "./.yarn/cache/yargs-parser-npm-21.1.1-8fdc003314-ed2d96a616.zip/node_modules/yargs-parser/",\
+          "packageDependencies": [\
+            ["yargs-parser", "npm:21.1.1"]\
           ],\
           "linkType": "HARD"\
         }]\
