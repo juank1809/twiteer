@@ -8,22 +8,34 @@ jobs:
   pact-publish-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Build Consumer Pact Tests
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "yarn"
+      - name: Install yarn
+        run: npm install -g yarn
+      - name: Install project dependencies
+        run: |
+          yarn set version berry
+          yarn
+      - name: "Generate Pact Tests"
         run: |
           cd packages
           cd twitter-ui
-          yarn install
           yarn run test:pact
-      - name: Build Provider Pact Tests
+      - name: Verificate Pact Test with The Provider
         run: |
           cd packages
           cd mock-service
-          yarn install
           yarn run test:pact
-      - uses: rajnavakotiikea/publish-pacts@v1.0.1
+      - name: publish pacts
+        uses: rajnavakotiikea/publish-pacts@v1.0.1
+        working-directory: packages/twitter-ui
         with:
-          pact_file_dir: packages/twitter-ui/pacts
+          pact_file_dir: ${PWD}/pacts
           consumer_app_version: ${{ github.sha }}
           tag: ${{ github.ref_name }}
           broker_base_url: https://juank180999.pactflow.io/
@@ -36,7 +48,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: docker pull pactfoundation/pact-cli:latest
       - name: Can I deploy?
-        run: GIT_BRANCH=${GIT_REF:11} make can_i_deploy
+        run: GIT_BRANCH=${GIT_REF:11} can_i_deploy
 
   # Only deploy from master
   deploy:
@@ -46,5 +58,5 @@ jobs:
       - uses: actions/checkout@v3
       - run: docker pull pactfoundation/pact-cli:latest
       - name: Deploy
-        run: GIT_BRANCH=${GIT_REF:11} make deploy
+        run: GIT_BRANCH=${GIT_REF:11} deploy
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test'
