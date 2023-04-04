@@ -35,7 +35,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress:open": "cypress open",
-    "test:pact": "CI=true react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --testTimeout 30000 src/api.pact.spec.ts"
+    "test:pact": "CI=true react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --testTimeout 30000 src/api.pact.spec.ts",
+    "pact:publish": "pact-broker publish ./pacts --consumer-app-version=\"$(npx @pact-foundation/absolute-version)\" --auto-detect-version-properties --broker-base-url=http://localhost:8000 --broker-username pact_workshop --broker-password pact_workshop"
 
   },
   "eslintConfig": {
