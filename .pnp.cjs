@@ -1285,7 +1285,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],\
       [\
         "@types/jest",\
-        "npm:29.5.0"\
+        "npm:27.5.2"\
       ],\
       [\
         "@types/json-schema",\
@@ -6358,10 +6358,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       [\
         "ts-dedent",\
         "npm:2.2.0"\
-      ],\
-      [\
-        "ts-jest",\
-        "virtual:6978aba4c62e9bf337705038ae2afbcffffa5f99ae7460c7ff75b8040da3dc78a2802aee2f44b4dd742e251c9151e9472be70f707b62758ba44b6db4bcfc6150#npm:29.1.0"\
       ],\
       [\
         "ts-pnp",\
@@ -21755,6 +21751,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["electron-to-chromium", "npm:1.4.348"],\
             ["node-releases", "npm:2.0.10"],\
             ["update-browserslist-db", "virtual:e3b9e9d029ed690d72cbb29196ba0a23f15b398eeb926347678187be937db870a04cbf984eecc8e0ec9c290158a9cd8607d12f0188665abe039fa4a9051a22ac#npm:1.0.10"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["bs-logger", [\
+        ["npm:0.2.6", {\
+          "packageLocation": "./.yarn/cache/bs-logger-npm-0.2.6-7670f88b66-d34bdaf68c.zip/node_modules/bs-logger/",\
+          "packageDependencies": [\
+            ["bs-logger", "npm:0.2.6"],\
+            ["fast-json-stable-stringify", "npm:2.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -38699,97 +38705,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/ts-dedent-npm-2.2.0-00389a0e6b-93ed8f7878.zip/node_modules/ts-dedent/",\
           "packageDependencies": [\
             ["ts-dedent", "npm:2.2.0"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
-      ["ts-jest", [\
-        ["npm:29.1.0", {\
-          "packageLocation": "./.yarn/cache/ts-jest-npm-29.1.0-ede119702b-535dc42ad5.zip/node_modules/ts-jest/",\
-          "packageDependencies": [\
-            ["ts-jest", "npm:29.1.0"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:29.1.0", {\
-          "packageLocation": "./.yarn/__virtual__/ts-jest-virtual-4a9f60cc6e/0/cache/ts-jest-npm-29.1.0-ede119702b-535dc42ad5.zip/node_modules/ts-jest/",\
-          "packageDependencies": [\
-            ["ts-jest", "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:29.1.0"],\
-            ["@babel/core", "npm:7.21.4"],\
-            ["@jest/types", null],\
-            ["@types/babel-jest", null],\
-            ["@types/babel__core", "npm:7.20.0"],\
-            ["@types/esbuild", null],\
-            ["@types/jest", "npm:27.5.2"],\
-            ["@types/jest__types", null],\
-            ["@types/typescript", null],\
-            ["babel-jest", "virtual:4bb37e3b1a9f8111b211fb9785d7fe1ad559c3a8b5956e74f4aab47565dbdfe95e1b9798cf1bb1e0e6324260afdf3f3ec9e510adb9cfc067ffd2414e7207ccc5#npm:29.5.0"],\
-            ["bs-logger", "npm:0.2.6"],\
-            ["esbuild", null],\
-            ["fast-json-stable-stringify", "npm:2.1.0"],\
-            ["jest", null],\
-            ["jest-util", "npm:29.5.0"],\
-            ["json5", "npm:2.2.3"],\
-            ["lodash.memoize", "npm:4.1.2"],\
-            ["make-error", "npm:1.3.6"],\
-            ["semver", "npm:7.3.8"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=65a307"],\
-            ["yargs-parser", "npm:21.1.1"]\
-          ],\
-          "packagePeers": [\
-            "@babel/core",\
-            "@jest/types",\
-            "@types/babel-jest",\
-            "@types/babel__core",\
-            "@types/esbuild",\
-            "@types/jest",\
-            "@types/jest__types",\
-            "@types/typescript",\
-            "babel-jest",\
-            "esbuild",\
-            "jest",\
-            "typescript"\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["virtual:6978aba4c62e9bf337705038ae2afbcffffa5f99ae7460c7ff75b8040da3dc78a2802aee2f44b4dd742e251c9151e9472be70f707b62758ba44b6db4bcfc6150#npm:29.1.0", {\
-          "packageLocation": "./.yarn/__virtual__/ts-jest-virtual-65ca2ee633/0/cache/ts-jest-npm-29.1.0-ede119702b-535dc42ad5.zip/node_modules/ts-jest/",\
-          "packageDependencies": [\
-            ["ts-jest", "virtual:6978aba4c62e9bf337705038ae2afbcffffa5f99ae7460c7ff75b8040da3dc78a2802aee2f44b4dd742e251c9151e9472be70f707b62758ba44b6db4bcfc6150#npm:29.1.0"],\
-            ["@babel/core", null],\
-            ["@jest/types", null],\
-            ["@types/babel-jest", null],\
-            ["@types/babel__core", null],\
-            ["@types/esbuild", null],\
-            ["@types/jest", "npm:29.5.0"],\
-            ["@types/jest__types", null],\
-            ["@types/typescript", null],\
-            ["babel-jest", null],\
-            ["bs-logger", "npm:0.2.6"],\
-            ["esbuild", null],\
-            ["fast-json-stable-stringify", "npm:2.1.0"],\
-            ["jest", "virtual:6978aba4c62e9bf337705038ae2afbcffffa5f99ae7460c7ff75b8040da3dc78a2802aee2f44b4dd742e251c9151e9472be70f707b62758ba44b6db4bcfc6150#npm:29.5.0"],\
-            ["jest-util", "npm:29.5.0"],\
-            ["json5", "npm:2.2.3"],\
-            ["lodash.memoize", "npm:4.1.2"],\
-            ["make-error", "npm:1.3.6"],\
-            ["semver", "npm:7.3.8"],\
-            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=65a307"],\
-            ["yargs-parser", "npm:21.1.1"]\
-          ],\
-          "packagePeers": [\
-            "@babel/core",\
-            "@jest/types",\
-            "@types/babel-jest",\
-            "@types/babel__core",\
-            "@types/esbuild",\
-            "@types/jest",\
-            "@types/jest__types",\
-            "@types/typescript",\
-            "babel-jest",\
-            "esbuild",\
-            "jest",\
-            "typescript"\
           ],\
           "linkType": "HARD"\
         }]\

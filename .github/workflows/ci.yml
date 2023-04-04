@@ -31,11 +31,11 @@ jobs:
           cd packages
           cd mock-service
           yarn run test:pact
-      - name: publish pacts
-        uses: rajnavakotiikea/publish-pacts@v1.0.1
-        working-directory: packages/twitter-ui
+      - name: Publish Pact Tests to Pactflow
+        uses: pact-foundation/pact-publish-action@master
         with:
-          pact_file_dir: ${PWD}/pacts
+          pact_broker_url: https://juank180999.pactflow.io/
+          pact_broker_token: ${{ secrets.PACTFLOW_TOKEN }}
           consumer_app_version: ${{ github.sha }}
           tag: ${{ github.ref_name }}
           broker_base_url: https://juank180999.pactflow.io/
@@ -58,5 +58,5 @@ jobs:
       - uses: actions/checkout@v3
       - run: docker pull pactfoundation/pact-cli:latest
       - name: Deploy
-        run: GIT_BRANCH=${GIT_REF:11} deploy
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test'
+        run: GIT_BRANCH=${GIT_REF:11} make deploy
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/test'

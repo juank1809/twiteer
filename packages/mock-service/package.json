@@ -29,5 +29,6 @@
         "lint": "eslint . --ext .ts",
         "build": "tsc ",
         "test:pact": "yarn jest --transformIgnorePatterns \"node_modules/\" --testTimeout 30000 --testMatch \"**/*.pact.test.ts\""
+
     }
 }
