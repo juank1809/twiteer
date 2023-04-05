@@ -22,6 +22,8 @@ jobs:
       #     yarn install
       #     yarn run test:pact
       - name: Publish pacts
+        run: cd ${PWD}
+      - name: xd
         run: ls
 
   can-i-deploy:
