@@ -22,7 +22,7 @@ jobs:
       #     yarn install
       #     yarn run test:pact
       - name: Publish pacts
-        run: cd ${PWD}
+        run: cd ${PWD}/packages/twitter-ui
       - name: xd
         run: ls
 
