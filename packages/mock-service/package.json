@@ -20,7 +20,8 @@
         "concurrently": "^7.2.2",
         "eslint": "^8.18.0",
         "nodemon": "^2.0.18",
-        "prettier": "^2.7.1"
+        "prettier": "^2.7.1",
+        "ts-jest": "^29.1.0"
     },
     "scripts": {
         "start": "node dist/src/app.js",
