@@ -22,7 +22,7 @@ jobs:
       #     yarn install
       #     yarn run test:pact
       - name: Publish pacts
-        run: echo ls
+        run: ls
 
   can-i-deploy:
     runs-on: ubuntu-latest
