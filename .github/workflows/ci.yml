@@ -22,7 +22,7 @@ jobs:
       #     yarn install
       #     yarn run test:pact
       - name: Publish pacts
-        run: docker run --rm -w ${PWD} pactfoundation/pact-cli:latest pact-broker publish packages/twitter-ui/pacts --consumer-app-version=${{ github.sha }} --broker-base-url=https://juank180999.pactflow.io --broker-token=t6IERD80gXvXbhdO5N-HAg
+        run: docker run --rm -w ${PWD} pactfoundation/pact-cli:latest pact-broker publish ./packages/twitter-ui/pacts --consumer-app-version=${{ github.sha }} --broker-base-url=https://juank180999.pactflow.io --broker-token=t6IERD80gXvXbhdO5N-HAg
 
   can-i-deploy:
     runs-on: ubuntu-latest
