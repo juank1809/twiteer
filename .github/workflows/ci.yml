@@ -21,27 +21,3 @@ jobs:
       #     cd mock-service
       #     yarn install
       #     yarn run test:pact
-      - name: Publish pacts
-        run: |
-          cd ${PWD}/packages/twitter-ui
-          ls
-
-  can-i-deploy:
-    runs-on: ubuntu-latest
-    needs: pact-publish-and-test
-    steps:
-      - uses: actions/checkout@v3
-      - run: docker pull pactfoundation/pact-cli:latest
-      - name: Can I deploy?
-        run: GIT_BRANCH=${GIT_REF:11} make can_i_deploy
-
-  # Only deploy from master
-  deploy:
-    runs-on: ubuntu-latest
-    needs: can-i-deploy
-    steps:
-      - uses: actions/checkout@v3
-      - run: docker pull pactfoundation/pact-cli:latest
-      - name: Deploy
-        run: GIT_BRANCH=${GIT_REF:11} make deploy
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test'
