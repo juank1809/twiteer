@@ -11,6 +11,8 @@ describe("Retweet a tweet", () => {
     cy.findAllByTitle(/retweet count/i)
       .first()
       .click();
+
+    // This should open the Modal!
     cy.findByText(/retweet/i).click();
 
     cy.findAllByText(firstTweetText).should("have.length.above", 1);

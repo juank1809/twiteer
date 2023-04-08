@@ -35,7 +35,8 @@
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
     "cypress:open": "cypress open",
-    "test:pact": "CI=true react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --testTimeout 30000 src/api.pact.spec.ts"
+    "test:pact": "CI=true react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --testTimeout 30000 src/api.pact.spec.ts",
+    "pact:publish": "docker run -v $(pwd):/app --rm pactfoundation/pact-cli pact-broker publish /app/pact/ --consumer-app-version 1.0.0 --broker-base-url=https://juank180999.pactflow.io --broker-token=t6IERD80gXvXbhdO5N-HAg"
   },
   "eslintConfig": {
     "overrides": [

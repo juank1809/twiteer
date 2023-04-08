@@ -1,11 +1,9 @@
 name: Build and Publish Pact Tests
 
-on:
-  push:
-    branches: [main]
+on: push
 
 jobs:
-  pact-publish-and-test:
+  pact-test-and-publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,9 +20,14 @@ jobs:
       #     yarn install
       #     yarn run test:pact
       - name: Publish pacts
+        working-directory: packages/twitter-ui
+        # Note: It is needed to create a bind mount in the docker container since the pacts that are publish must be inside of it.
         run: |
-          cd ${PWD}/packages/twitter-ui
-          ls
+          docker run \
+          -v ${PWD}:/twitter-ui \
+          --rm pactfoundation/pact-cli pact-broker publish /twitter-ui/pacts \
+          --consumer-app-version ${{ github.sha }} --broker-base-url=https://juank180999.pactflow.io \
+          --broker-token=${{ secrets.PACTFLOW_TOKEN }} \
 
   can-i-deploy:
     runs-on: ubuntu-latest

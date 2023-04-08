@@ -1,20 +1,15 @@
 import path from "path";
-import {
-  PactV3,
-  MatchersV3,
-  SpecificationVersion,
-} from "@pact-foundation/pact";
+import { PactV3, MatchersV3 } from "@pact-foundation/pact";
 import createApiInstance, * as api from "./api";
 import { tweetsData } from "./tweetsData";
 
 const { eachLike } = MatchersV3;
 
 const provider = new PactV3({
-  consumer: "twitter-ui",
-  provider: "mock-service",
+  consumer: "twitter-consumer",
+  provider: "mock-provider",
   logLevel: "warn",
-  dir: path.resolve(process.cwd(), "pacts"),
-  spec: SpecificationVersion.SPECIFICATION_VERSION_V2,
+  dir: path.resolve(process.cwd(), "pact"),
 });
 
 const suitor = {
