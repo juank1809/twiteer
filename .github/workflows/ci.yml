@@ -3,22 +3,36 @@ name: Build and Publish Pact Tests
 on: push
 
 jobs:
-  pact-test-and-publish:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install all monorepo dependencies
+        run: yarn install --frozen-lockfile
+
+  twitter-ui-pact-test-and-publish:
+    needs: [install]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      # - name: Build Consumer Pact Tests
-      #   run: |
-      #     cd packages
-      #     cd twitter-ui
-      #     yarn install
-      #     yarn run test:pact
-      # - name: Build Provider Pact Tests
-      #   run: |
-      #     cd packages
-      #     cd mock-service
-      #     yarn install
-      #     yarn run test:pact
+      - name: Build Consumer Pact Tests
+        working-directory: packages/twitter-ui|
+        run: yarn run test:pact
+
+      - name: Build Provider Pact Tests
+        working-directory: packages/mock-service
+        run: yarn run test:pact
+
       - name: Publish pacts
         working-directory: packages/twitter-ui
         # Note: It is needed to create a bind mount in the docker container since the pacts that are publish must be inside of it.
