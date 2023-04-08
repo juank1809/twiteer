@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build Consumer Pact Tests
-        working-directory: packages/twitter-ui|
+        working-directory: packages/twitter-ui
         run: yarn run test:pact
 
       - name: Build Provider Pact Tests
