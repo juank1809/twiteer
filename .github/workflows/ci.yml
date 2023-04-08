@@ -56,11 +56,15 @@ jobs:
     needs: [install]
     steps:
       - uses: actions/checkout@v3
+      - name: Start server
+
       - name: Run E2E Cypress Testing
         uses: cypress-io/github-action@v5
         with:
           working-directory: packages/twitter-ui
           install-command: yarn install
+          start: yarn start
+          wait-on: "http://localhost:3000"
 
   unit-testing:
     needs: [install]

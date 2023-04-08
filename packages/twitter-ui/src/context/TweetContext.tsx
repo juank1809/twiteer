@@ -63,6 +63,7 @@ export const TweetContextProvider: React.FC<TweetContextProviderChildren> = ({
     incrementFavorite,
     decrementFavorite,
   };
+
   return (
     <TweetContext.Provider value={value}>{children}</TweetContext.Provider>
   );
