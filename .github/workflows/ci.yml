@@ -45,7 +45,7 @@ jobs:
 
   can-i-deploy:
     runs-on: ubuntu-latest
-    needs: pact-test-and-publish
+    needs: twitter-ui-pact-test-and-publish
     steps:
       - uses: actions/checkout@v3
       - run: docker pull pactfoundation/pact-cli:latest
