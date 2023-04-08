@@ -62,7 +62,7 @@ jobs:
           working-directory: packages/twitter-ui
           install-command: yarn install
 
-  twitter-ui-pact-test-and-publish:
+  unit-testing:
     needs: [install]
     runs-on: ubuntu-latest
     steps:
