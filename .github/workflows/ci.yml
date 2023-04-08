@@ -25,6 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
       - name: Build Consumer Pact Tests
         working-directory: packages/twitter-ui
         run: yarn run test:pact
