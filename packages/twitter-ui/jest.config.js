@@ -6,8 +6,8 @@ module.exports = {
       '^.+\\.ts?$': 'ts-jest',
     },
     // This is not a unit test, is a pact testing
-    testPathIgnorePatterns: [
-      "<rootDir>/src/api.pact.spec.ts",
-    ],
+    
+    setupTestFrameworkScriptFile: ['<rootDir>src/jest-setup.ts']
+
 
 }
