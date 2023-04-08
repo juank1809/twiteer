@@ -5,9 +5,6 @@ on: push
 jobs:
   pact-test-and-publish:
     runs-on: ubuntu-latest
-    container: node:16-slim
-    services:
-      image: pactfoundation/pact-cli
     steps:
       - uses: actions/checkout@v3
       # - name: Build Consumer Pact Tests
