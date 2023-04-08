@@ -9,7 +9,7 @@ const provider = new PactV3({
   consumer: "twitter-consumer",
   provider: "mock-provider",
   logLevel: "warn",
-  dir: path.resolve(process.cwd(), "pact"),
+  dir: path.resolve(process.cwd(), "pacts"),
 });
 
 const suitor = {

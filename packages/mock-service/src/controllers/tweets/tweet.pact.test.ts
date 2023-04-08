@@ -6,7 +6,6 @@ import tweetsController from './tweets.controller';
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use('/tweets', tweetsController);
 
 const server = app.listen(8080);
@@ -18,7 +17,7 @@ describe("Tweets pact verification", () => {
             provider: 'ProductService',
             providerVersion: "1.0.0",
             pactUrls: [ 
-                path.resolve(__dirname, '../../../../twitter-ui/pacts/twitter-ui-mock-service.json')
+                path.resolve(__dirname, '../../../../twitter-ui/pacts/twitter-consumer-twitter-provider.json')
             ]
         }
         return new Verifier(opts).verifyProvider().then((output) => {
