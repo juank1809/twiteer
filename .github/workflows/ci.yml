@@ -5,6 +5,9 @@ on: push
 jobs:
   pact-test-and-publish:
     runs-on: ubuntu-latest
+    container: node:16-slim
+    services:
+      image: pactfoundation/pact-cli
     steps:
       - uses: actions/checkout@v3
       # - name: Build Consumer Pact Tests
@@ -24,14 +27,14 @@ jobs:
         # Note: It is needed to create a bind mount in the docker container since the pacts that are publish must be inside of it.
         run: |
           docker run \
-          -v ${PWD}:/twitter-ui \
-          --rm pactfoundation/pact-cli pact-broker publish /twitter-ui/pacts \
+          -v ${PWD}:${PWD} \
+          --rm pactfoundation/pact-cli pact-broker publish ${PWD}/pacts \
           --consumer-app-version ${{ github.sha }} --broker-base-url=https://juank180999.pactflow.io \
           --broker-token=${{ secrets.PACTFLOW_TOKEN }} \
 
   can-i-deploy:
     runs-on: ubuntu-latest
-    needs: pact-publish-and-test
+    needs: pact-test-and-publish
     steps:
       - uses: actions/checkout@v3
       - run: docker pull pactfoundation/pact-cli:latest
