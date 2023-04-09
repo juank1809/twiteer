@@ -68,6 +68,10 @@ jobs:
     needs: [install]
     runs-on: ubuntu-latest
     steps:
+      - name: Install yarn
+      - run: npm install -g yarn
+      - name: upgrade yarn
+      - run: yarn set version berry
       - uses: actions/checkout@v3
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -75,7 +79,7 @@ jobs:
           node-version: "16"
           cache: "yarn"
       - name: Install dependencies
-        run: yarn
+        run: yarn install
       - name: Run all Integration and Unit Tests from Frontend
         working-directory: packages/twitter-ui
         run: yarn test
