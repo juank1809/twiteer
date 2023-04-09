@@ -65,6 +65,7 @@ jobs:
           wait-on: "http://localhost:3000"
 
   unit-testing:
+    needs: [install]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
