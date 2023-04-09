@@ -1,0 +1,105 @@
+name: Build and Publish Pact Tests
+
+on: push
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v3
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install all monorepo dependencies
+        run: yarn install --frozen-lockfile
+
+  twitter-ui-pact-test-and-publish:
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "yarn"
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build Consumer Pact Tests
+        working-directory: packages/twitter-ui
+        run: yarn run test:pact
+
+      - name: Build Provider Pact Tests
+        working-directory: packages/mock-service
+        run: yarn run test:pact
+
+      - name: Publish pacts
+        working-directory: packages/twitter-ui
+        # Note: It is needed to create a bind mount in the docker container since the pacts that are publish must be inside of it.
+        run: |
+          docker run \
+          -v ${PWD}:${PWD} \
+          --rm pactfoundation/pact-cli pact-broker publish ${PWD}/pacts \
+          --consumer-app-version ${{ github.sha }} --broker-base-url=https://juank180999.pactflow.io \
+          --broker-token=${{ secrets.PACTFLOW_TOKEN }} \
+
+  e2e-testing:
+    runs-on: ubuntu-latest
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run E2E Cypress Testing
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: packages/twitter-ui
+          install-command: yarn install
+          start: yarn start
+          wait-on: "http://localhost:3000"
+
+  unit-testing:
+    needs: [install]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: "Setup Node"
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+          cache: "yarn"
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn set version berry
+          yarn install
+      - name: Run all Integration and Unit Tests from Frontend
+        working-directory: packages/twitter-ui
+        run: yarn test
+
+  # can-i-deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: twitter-ui-pact-test-and-publish
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - run: docker pull pactfoundation/pact-cli:latest
+  #     - name: Can I deploy?
+  #       run: GIT_BRANCH=${GIT_REF:11} make can_i_deploy
+
+  # # Only deploy from master
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   needs: can-i-deploy
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - run: docker pull pactfoundation/pact-cli:latest
+  #     - name: Deploy
+  #       run: GIT_BRANCH=${GIT_REF:11} make deploy
+  #       if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/test'
