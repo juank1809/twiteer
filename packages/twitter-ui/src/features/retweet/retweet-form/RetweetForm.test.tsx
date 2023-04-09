@@ -5,7 +5,7 @@ import { customTweetContextRender } from "../../../utils/test-utils";
 import { TweetsFeed } from "../../tweet-feed";
 import RetweetForm from "./RetweetForm";
 
-it("should retweet with text", () => {
+it("should retweet with text", async () => {
   customTweetContextRender(
     <>
       <RetweetForm tweet={tweetsData[0]} />
@@ -16,13 +16,13 @@ it("should retweet with text", () => {
   const RETWEET_QUOTE = "I'm quoting this retweet";
 
   const form = screen.getByLabelText(/add a comment/i);
-  userEvent.type(form, RETWEET_QUOTE);
+  await userEvent.type(form, RETWEET_QUOTE);
 
   const retweetButton = screen.getByRole("button", {
     name: /tweet/i,
   });
 
-  userEvent.click(retweetButton);
+  await userEvent.click(retweetButton);
 
   const tweetsFeed = screen.getAllByTestId("tweet");
 

@@ -17,8 +17,8 @@ test("should add a tweet from textbox", async () => {
     name: /tweet/i,
   });
 
-  userEvent.type(textArea, "New tweet from textbox");
-  userEvent.click(button);
+  await userEvent.type(textArea, "New tweet from textbox");
+  await userEvent.click(button);
 
   const tweetsFeed = screen.getAllByTestId("tweet");
   expect(tweetsFeed).toHaveLength(4);
