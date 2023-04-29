@@ -2,6 +2,10 @@
 
 import React from "react";
 import ReactModal from "react-modal";
+<<<<<<< HEAD
+import { AiOutlineClose } from "react-icons/ai";
+=======
+>>>>>>> main
 
 if (process.env.NODE_ENV !== "test") ReactModal.setAppElement("#modals");
 
@@ -14,11 +18,14 @@ interface ModalProps {
 const Modal: React.FC<ModalProps> = ({ children, isOpen, setIsOpen }) => {
   return (
     <ReactModal
-      className="modal"
+      className="p-5 absolute md:w-[38rem] md:top-6 left-2/4 translate-x-[-50%] md:min-w-min my-0 mx-auto md:h-min h-full bottom-10 inline-block rounded-3xl bg-black overflow-hidden"
       isOpen={isOpen}
       onRequestClose={() => setIsOpen(false)}
     >
-      {children}
+      <div className="flex flex-col gap-5">
+        <AiOutlineClose className="fill-white cursor-pointer !w-5 !h-5" />
+        {children}
+      </div>
     </ReactModal>
   );
 };

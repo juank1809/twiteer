@@ -15,7 +15,7 @@ it("should retweet with text", async () => {
 
   const RETWEET_QUOTE = "I'm quoting this retweet";
 
-  const form = screen.getByLabelText(/add a comment/i);
+  const form = screen.getByPlaceholderText(/add a comment/i);
   await userEvent.type(form, RETWEET_QUOTE);
 
   const retweetButton = screen.getByRole("button", {

@@ -14,7 +14,7 @@ test("should add a tweet from textbox", async () => {
     </>
   );
 
-  const textArea = screen.getByLabelText(/what are you thinking today?/i);
+  const textArea = screen.getByPlaceholderText(/what are you thinking today?/i);
   const button = screen.getByRole("button", {
     name: /tweet/i,
   });

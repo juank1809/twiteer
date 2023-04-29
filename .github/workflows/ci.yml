@@ -1,4 +1,4 @@
-name: Build and Publish Pact Tests
+name: Continuous Integration
 
 on: push
 
@@ -42,7 +42,7 @@ jobs:
         run: yarn run test:pact
 
       - name: Publish pacts
-        working-directory: packages/twitter-ui
+        working-directory: packages/twiteer-ui
         # Note: It is needed to create a bind mount in the docker container since the pacts that are publish must be inside of it.
         run: |
           docker run \

@@ -17,7 +17,7 @@ describe("Tweets pact verification", () => {
             provider: 'ProductService',
             providerVersion: "1.0.0",
             pactUrls: [ 
-                path.resolve(__dirname, '../../../../twitter-ui/pacts/twitter-consumer-mock-provider.json')
+                path.resolve(__dirname, '../../../../twiteer-ui/pacts/twitter-consumer-mock-provider.json')
             ]
         }
         return new Verifier(opts).verifyProvider().then((output) => {

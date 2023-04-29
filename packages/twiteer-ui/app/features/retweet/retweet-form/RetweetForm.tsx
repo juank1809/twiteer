@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useTweets } from "../../../context/TweetContext";
 import { ITweet } from "../../../types/tweet";
-import getUserInitials from "../../../utils/getUserInitials";
 import { Button } from "../../../components/Button";
 import { TweetPreview } from "../../tweet";
 import { TextArea } from "../../../components/TextArea";
@@ -31,27 +30,30 @@ const RetweetForm: React.FC<RetweetFormProps> = ({ tweet }) => {
   };
 
   return (
-    <div className="new-tweet-form__main-container">
-      <UserImage size="large">
-        {getUserInitials(newTweetMarkup.user.fullName)}
-      </UserImage>
-      <form className="new-tweet-form__form-container" onSubmit={handleSubmit}>
-        <TextArea
-          name="new-tweet-form"
-          value={retweetText}
-          minRows={1}
-          label="Add a comment"
-          handleChange={handleChange}
-        />
-        <TweetPreview tweet={tweet} />
-        <Button
-          type="submit"
-          buttonType="primary"
-          style={{ alignSelf: "flex-end" }}
+    <div className="bg-black flex gap-5 overflow-hidden w-full">
+      <UserImage />
+      <div className="w-full">
+        <form
+          className="relative flex flex-col self-stretch justify-self-stretch place-self-stretch w-full"
+          onSubmit={handleSubmit}
         >
-          Tweet{" "}
-        </Button>
-      </form>
+          <TextArea
+            name="new-tweet-form"
+            value={retweetText}
+            minRows={1}
+            placeholder="Add a comment"
+            handleChange={handleChange}
+          />
+          <TweetPreview tweet={tweet} />
+          <Button
+            type="submit"
+            buttonType="primary"
+            style={{ alignSelf: "flex-end" }}
+          >
+            Tweet{" "}
+          </Button>
+        </form>
+      </div>
     </div>
   );
 };

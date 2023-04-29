@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import getUserInitials from "../../utils/getUserInitials";
 import { useState } from "react";
 import { useTweets } from "../../context/TweetContext";
 import { UserImage } from "../../components/UserImage";
@@ -42,19 +41,14 @@ const NewTweetForm: React.FC = () => {
   };
 
   return (
-    <div className="new-tweet-form">
-      <div className="new-tweet-form__main-container">
-        <UserImage size="medium">
-          {getUserInitials(newTweetMarkup.user.fullName)}
-        </UserImage>
-        <form
-          className="new-tweet-form__form-container"
-          onSubmit={handleSubmit}
-        >
+    <div className="w-full sm:w-2/4 bg-black">
+      <div className="pt-5 pr-3 pb-3 pl-4 flex gap-4">
+        <UserImage size="medium" />
+        <form className="flex flex-col gap-3 w-full" onSubmit={handleSubmit}>
           <TextArea
             name="new-tweet-form"
             value={tweetText}
-            label="What are you thinking today?"
+            placeholder="What are you thinking today?"
             handleChange={handleChange}
           />
           <br />

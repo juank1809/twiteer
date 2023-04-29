@@ -1,10 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useCallback } from "react";
+import TextareaAutosize from "@mui/base/TextareaAutosize";
+import useAutoFocus from "../../hooks/useAutoFocus";
 
 interface TextAreaProps {
   name: string;
-  label: string;
+  placeholder: string;
   handleChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   value: string;
   minRows?: number;
@@ -12,26 +14,19 @@ interface TextAreaProps {
 
 const TextArea: React.FC<TextAreaProps> = ({
   name,
-  label,
+  placeholder,
   handleChange,
   value,
   minRows = 3,
 }) => {
+  const retweetInput = useAutoFocus();
   return (
-    <div className="text-box__container">
-      <textarea
-        id={name}
-        className="text-box"
-        name={name}
-        value={value}
-        onChange={handleChange}
-        rows={3}
-        cols={40}
-      />
-      <label className="text-box__label" htmlFor={name}>
-        {label}
-      </label>
-    </div>
+    <TextareaAutosize
+      placeholder={placeholder}
+      ref={retweetInput}
+      onChange={handleChange}
+      className="bg-black mt-12 w-full text-xl text-white outline-none resize-none"
+    />
   );
 };
 

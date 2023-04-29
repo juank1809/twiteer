@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.21.4",
+    "@mui/base": "^5.0.0-alpha.127",
     "@types/node": "^18.16.0",
     "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
@@ -30,6 +31,7 @@
     "rc-menu": "^9.6.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "react-modal": "^3.16.1",
     "react-scripts": "^5.0.1",
     "react-textarea-autosize": "^8.3.4",
