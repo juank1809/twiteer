@@ -2,7 +2,10 @@
 
 import React from "react";
 import ReactModal from "react-modal";
+<<<<<<< HEAD
 import { AiOutlineClose } from "react-icons/ai";
+=======
+>>>>>>> main
 
 if (process.env.NODE_ENV !== "test") ReactModal.setAppElement("#modals");
 
@@ -11,17 +14,6 @@ interface ModalProps {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   children: React.ReactNode;
 }
-
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 
 const Modal: React.FC<ModalProps> = ({ children, isOpen, setIsOpen }) => {
   return (

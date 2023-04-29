@@ -29,6 +29,7 @@ const FavoriteCount: React.FC<{ tweet: ITweet }> = ({
       className="flex text-gray items-center text-xs gap-1 cursor-pointer min-w-min"
     >
       <MdOutlineFavoriteBorder className="w-5 h-5" />
+
       {favoriteCount}
     </span>
   );

@@ -16,7 +16,7 @@ const UserImage: React.FC<UserImageProps> = ({ size = "medium" }) => {
       alt="Picture of the author"
       className={`rounded-full 
       
-      ${size === "medium" ? "w-12 h-12" : "w-5 h-5"}`}
+      ${sizessss === "medium" ? "w-12 h-12" : "w-5 h-5"}`}
     />
   );
 };

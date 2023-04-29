@@ -2,6 +2,8 @@
 
 import React from "react";
 import { ITweet } from "../../types/tweet";
+
+import getUserInitials from "../../utils/getUserInitials";
 import { RetweetButton } from "../retweet/retweet-button";
 import { FavoriteButton } from "./favorite-button";
 import { UserImage } from "../../components/UserImage";
@@ -22,6 +24,7 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
       className="bg-black border-b-[1px] w-full border-solid border-black-gray py-3 sm:px-1 md:px-4 sm:w-2/4 hover:bg-neutral-900 cursor-pointer"
     >
       <div className="">
+
         {type === "retweet" && !retweet && (
           <>
             <button className="tweet__retweet-message-icon">Hello</button>

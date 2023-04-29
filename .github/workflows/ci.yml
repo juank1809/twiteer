@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 name: Continuous Integration
-=======
-name: Build and Publish Pact Tests
 
->>>>>>> 681b5eeca87affeeeb37792b0489fc9f42249743
 on: push
 
 jobs:
