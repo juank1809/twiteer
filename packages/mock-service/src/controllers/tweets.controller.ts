@@ -51,35 +51,28 @@ router.post("/", (req: Request, res: Response) => {
   res.json(tweetsData);
 });
 
-router.post("/retweet/:id", (req: Request, res: Response) => {
-  const tweetId = parseInt(req.params.id);
-  const toRetweet = tweetsData.find((tweet) => tweet.id === tweetId);
+router.post("/retweet", (req: Request, res: Response) => {
+  const retweet = req.body;
 
-  if (!toRetweet) {
-    return res.status(404).json({
-      error: "Tweet to retweet not found!",
-    });
-  }
-
-  tweetsData.unshift(toRetweet);
+  retweet.type = "retweet"
+  tweetsData.unshift(retweet);
 
   res.json(tweetsData);
 });
 
 router.post("/favorite/:id", (req: Request, res: Response) => {
   const tweetId = parseInt(req.params.id)
+  console.log("tweetId", tweetId)
+ 
+  const tweetToFavorite = tweetsData.find(tweet => tweet.id === tweetId);
 
-  tweetsData.map((tweet) => {
-    tweet.id === tweetId
-      ? {
-          ...tweet,
-          favoriteCount: tweet.favoriteCount + 1,
-        }
-      : tweet;
-  });
+  if(!tweetToFavorite) {
+    return res.status(404).json({ error: 'Not found' });
+  }
 
-  
+  tweetToFavorite.favoriteCount += 1
 
+  console.log("tweetFavorited", tweetsData)
   return res.json(tweetsData);
 });
 

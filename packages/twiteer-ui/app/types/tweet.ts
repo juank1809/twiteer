@@ -8,5 +8,7 @@ export interface ITweet {
   replyCount: number;
   retweetCount: number;
   type: "default" | "retweet";
-  retweet?: string;
+  retweetQuote?: string;
 }
+
+export type TweetWithoutId = Omit<ITweet, "id">;

@@ -1,73 +1,81 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import { ITweet } from "../types/tweet";
-import { tweetsData } from "../tweetsData";
+import { ITweet, TweetWithoutId } from "../types/tweet";
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+  UseMutationResult,
+} from "react-query";
+
+import { api } from "../api/api";
 
 export const TweetContext = createContext<TweetContextValues | undefined>(
   undefined
 );
 
 export interface TweetContextValues {
-  tweets: ITweet[];
-  addTweet: (tweet: ITweet) => void;
-  addRetweet: (tweet: ITweet) => void;
-  incrementFavorite: (tweetId: number) => void;
-  decrementFavorite: (tweetId: number) => void;
+  getTweets: () => ITweet[] | undefined;
+  addTweet: () => UseMutationResult<ITweet[], unknown, TweetWithoutId, unknown>;
+  addRetweet: () => UseMutationResult<ITweet[], unknown, ITweet, unknown>;
+  incrementFavorite: () => UseMutationResult<
+    ITweet[],
+    unknown,
+    number,
+    unknown
+  >;
 }
 
 interface TweetContextProviderChildren {
   children: React.ReactNode;
 }
 
+const queryClient = new QueryClient();
+
 export const TweetContextProvider: React.FC<TweetContextProviderChildren> = ({
   children,
 }) => {
-  const [tweets, setTweets] = useState<ITweet[]>(tweetsData);
-
-  const incrementFavorite = (id: number) => {
-    const findAndIncrementTweetById = tweets.map((tweet) => {
-      return tweet.id === id
-        ? {
-            ...tweet,
-            favoriteCount: tweet.favoriteCount + 1,
-          }
-        : tweet;
-    });
-    setTweets(findAndIncrementTweetById);
+  const getTweets = () => {
+    const query = useQuery("tweets", api.getAllTweets);
+    return query.data;
   };
-
-  const decrementFavorite = (id: number) => {
-    const findAndDecrementTweetById = tweets.map((tweet) => {
-      return tweet.id === id
-        ? {
-            ...tweet,
-            favoriteCount: tweet.favoriteCount - 1,
-          }
-        : tweet;
+  const incrementFavorite = () => {
+    const mutation = useMutation(api.favoriteTweet, {
+      onSuccess: () => queryClient.invalidateQueries(),
     });
 
-    setTweets(findAndDecrementTweetById);
+    return mutation;
   };
 
-  const addTweet = (tweet: ITweet) => {
-    setTweets((prevTweets) => [tweet, ...prevTweets]);
+  const addTweet = () => {
+    const mutation = useMutation(api.postTweet, {
+      onSuccess: () => queryClient.invalidateQueries("tweets"),
+    });
+    return mutation;
   };
 
-  const addRetweet = (tweet: ITweet) => {
-    setTweets([{ ...tweet, id: tweet.id, type: "retweet" }, ...tweets]);
+  const addRetweet = () => {
+    console.log("is this getting called");
+    const mutation = useMutation(api.retweetTweet, {
+      onSuccess: () => queryClient.invalidateQueries("tweets"),
+    });
+    return mutation;
   };
 
   const value: TweetContextValues = {
-    tweets,
+    getTweets,
     addTweet,
     addRetweet,
     incrementFavorite,
-    decrementFavorite,
   };
 
   return (
-    <TweetContext.Provider value={value}>{children}</TweetContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <TweetContext.Provider value={value}>{children}</TweetContext.Provider>
+    </QueryClientProvider>
   );
 };
 

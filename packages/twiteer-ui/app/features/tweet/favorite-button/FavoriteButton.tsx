@@ -10,25 +10,25 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 const FavoriteCount: React.FC<{ tweet: ITweet }> = ({
   tweet: { id, favoriteCount },
 }) => {
-  const [shouldIncrementFavorite, setShouldIncrementFavorite] =
-    useState<boolean>(false);
-  const { incrementFavorite, decrementFavorite } = useTweets();
-
-  useEffect(() => {
-    shouldIncrementFavorite ? incrementFavorite(id) : decrementFavorite(id);
-  }, [shouldIncrementFavorite]);
-
+  const [isAlreadyFavorite, setIsAlreadyFavorite] = useState(false);
+  const { incrementFavorite } = useTweets();
+  const mutation = incrementFavorite();
   const handleFavoriteClick = () => {
-    setShouldIncrementFavorite((prev) => !prev);
+    mutation.mutate(id);
+    console.log(mutation.isSuccess);
+    setIsAlreadyFavorite((prev) => !prev);
   };
-
   return (
     <span
       title="favorite count"
       onClick={() => handleFavoriteClick()}
       className="flex text-gray items-center text-xs gap-1 cursor-pointer min-w-min"
     >
-      <MdOutlineFavoriteBorder className="w-5 h-5" />
+      <MdOutlineFavoriteBorder
+        className={`w-5 h-5
+       ${isAlreadyFavorite ? "fill-red-500" : ""}
+      `}
+      />
 
       {favoriteCount}
     </span>

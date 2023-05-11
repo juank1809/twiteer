@@ -3,7 +3,6 @@
 import React from "react";
 import { ITweet } from "../../types/tweet";
 
-import getUserInitials from "../../utils/getUserInitials";
 import { RetweetButton } from "../retweet/retweet-button";
 import { FavoriteButton } from "./favorite-button";
 import { UserImage } from "../../components/UserImage";
@@ -16,7 +15,7 @@ export interface TweetProps {
 }
 
 const Tweet: React.FC<TweetProps> = ({ tweet }) => {
-  const { message, replyCount, user, type, retweet } = tweet;
+  const { message, replyCount, user, type, retweetQuote } = tweet;
 
   return (
     <div
@@ -24,8 +23,9 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
       className="bg-black border-b-[1px] w-full border-solid border-black-gray py-3 sm:px-1 md:px-4 sm:w-2/4 hover:bg-neutral-900 cursor-pointer"
     >
       <div className="">
+        {/* If the type is retweet but is does not has a retweet quote just display a "You retweeted message" to make sure to communicate that is a retweet ! */}
 
-        {type === "retweet" && !retweet && (
+        {type === "retweet" && !retweetQuote && (
           <>
             <button className="tweet__retweet-message-icon">Hello</button>
             <span className="tweet__retweet-message">You Retweeted</span>
@@ -42,10 +42,13 @@ const Tweet: React.FC<TweetProps> = ({ tweet }) => {
             </div>
 
             <div className="text-white text-xs font-normal mb-2 ">
-              {" "}
-              {retweet ? retweet : message}{" "}
+              {/* If the tweet is a retweet with a quote, display the quote! */}
+              {retweetQuote ?? message}{" "}
             </div>
-            {type === "retweet" && retweet && <TweetPreview tweet={tweet} />}
+            {/* If the tweet is a retweet with a quote, display the tweet that is quoted from! */}
+            {type === "retweet" && retweetQuote && (
+              <TweetPreview tweet={tweet} />
+            )}
             <div className="flex justify-between w-3/4">
               <span
                 title="comment count"
