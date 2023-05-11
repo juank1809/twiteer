@@ -14,9 +14,10 @@ import { TbPencilMinus } from "react-icons/tb";
 const RetweetOptionsMenu: React.FC<{ tweet: ITweet }> = ({ tweet }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { addRetweet } = useTweets();
-
+  const mutation = addRetweet();
   const retweetWithoutText = () => {
-    addRetweet(tweet);
+    mutation.mutate(tweet);
+    console.log(mutation.data);
   };
 
   const openRetweetModal = () => {

@@ -5,7 +5,10 @@ import { useTweets } from "../../context/TweetContext";
 import { Tweet } from "../tweet";
 
 const TweetsFeed: React.FC = () => {
-  const { tweets } = useTweets();
+  const { getTweets } = useTweets();
+  const tweets = getTweets();
+  console.log(tweets);
+  if (typeof tweets === "undefined") return <div>error</div>;
   return (
     <div>
       {tweets.map((tweet, idx) => {

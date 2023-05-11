@@ -7,7 +7,6 @@ import { Button } from "../../../components/Button";
 import { TweetPreview } from "../../tweet";
 import { TextArea } from "../../../components/TextArea";
 import { UserImage } from "../../../components/UserImage";
-import { newTweetMarkup } from "../../new-tweet/NewTweetForm";
 
 interface RetweetFormProps {
   tweet: ITweet;
@@ -15,16 +14,16 @@ interface RetweetFormProps {
 const RetweetForm: React.FC<RetweetFormProps> = ({ tweet }) => {
   const [retweetText, setRetweetText] = useState("");
   const { addRetweet } = useTweets();
-
+  const mutation = addRetweet();
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setRetweetText(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addRetweet({
+    mutation.mutate({
       ...tweet,
-      retweet: retweetText,
+      retweetQuote: retweetText,
     });
     setRetweetText("");
   };

@@ -20,17 +20,16 @@ export const newTweetMarkup = {
 
 const NewTweetForm: React.FC = () => {
   const [tweetText, setTweetText] = useState("");
-  const { tweets, addTweet } = useTweets();
-
+  const { addTweet } = useTweets();
+  const mutation = addTweet();
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setTweetText(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addTweet({
+    mutation.mutate({
       ...newTweetMarkup,
-      id: tweets.length + 1,
       message: tweetText,
     });
     cleanAfterTweet();
