@@ -43,9 +43,7 @@ export const TweetContextProvider: React.FC<TweetContextProviderChildren> = ({
     return query.data;
   };
   const incrementFavorite = () => {
-    const mutation = useMutation(api.favoriteTweet, {
-      onSuccess: () => queryClient.invalidateQueries(),
-    });
+    const mutation = useMutation(api.favoriteTweet);
 
     return mutation;
   };

@@ -9,6 +9,8 @@ export interface ITweet {
   retweetCount: number;
   type: "default" | "retweet";
   retweetQuote?: string;
+  isAlreadyFavourite?: boolean;
+  isAlreadyRetweet?: boolean;
 }
 
 export type TweetWithoutId = Omit<ITweet, "id">;

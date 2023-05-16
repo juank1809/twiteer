@@ -11,13 +11,21 @@ import "rc-dropdown/assets/index.css";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { TbPencilMinus } from "react-icons/tb";
 
-const RetweetOptionsMenu: React.FC<{ tweet: ITweet }> = ({ tweet }) => {
+interface RetweetOptionsMenuProps {
+  tweet: ITweet;
+  handleIncrement: () => void;
+}
+
+const RetweetOptionsMenu: React.FC<RetweetOptionsMenuProps> = ({
+  tweet,
+  handleIncrement,
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const { addRetweet } = useTweets();
   const mutation = addRetweet();
   const retweetWithoutText = () => {
     mutation.mutate(tweet);
-    console.log(mutation.data);
+    handleIncrement();
   };
 
   const openRetweetModal = () => {
