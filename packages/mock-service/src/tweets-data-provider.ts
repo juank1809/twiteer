@@ -50,6 +50,8 @@ export interface ITweet {
   retweetCount: number;
   type: "default" | "retweet";
   retweet?: string;
+  isAlreadyFavourite?: boolean;
+  isAlreadyRetweet?: boolean;
 }
 
 export type tweetActions = `${actions}.tweets`;

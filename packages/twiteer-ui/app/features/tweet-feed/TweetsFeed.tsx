@@ -7,7 +7,6 @@ import { Tweet } from "../tweet";
 const TweetsFeed: React.FC = () => {
   const { getTweets } = useTweets();
   const tweets = getTweets();
-  console.log(tweets);
   if (typeof tweets === "undefined") return <div>error</div>;
   return (
     <div>

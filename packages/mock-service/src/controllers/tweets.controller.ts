@@ -47,14 +47,18 @@ router.get("/", (_req: Request, res: Response,) => {
 });
 
 router.post("/", (req: Request, res: Response) => {
-  tweetsData.unshift(req.body);
+tweetsData.unshift(req.body);
   res.json(tweetsData);
 });
 
 router.post("/retweet", (req: Request, res: Response) => {
   const retweet = req.body;
-
+  const originalTweet = tweetsData.find((tweet) => tweet.id === retweet.id)
+  if(!originalTweet) return res.status(404).json({error: "Something went wrong"})
+  
+  originalTweet.retweetCount++;
   retweet.type = "retweet"
+
   tweetsData.unshift(retweet);
 
   res.json(tweetsData);
@@ -62,18 +66,21 @@ router.post("/retweet", (req: Request, res: Response) => {
 
 router.post("/favorite/:id", (req: Request, res: Response) => {
   const tweetId = parseInt(req.params.id)
-  console.log("tweetId", tweetId)
  
   const tweetToFavorite = tweetsData.find(tweet => tweet.id === tweetId);
 
   if(!tweetToFavorite) {
     return res.status(404).json({ error: 'Not found' });
   }
+  tweetToFavorite.favoriteCount += tweetToFavorite.isAlreadyFavourite ? 1 : -1
 
-  tweetToFavorite.favoriteCount += 1
-
-  console.log("tweetFavorited", tweetsData)
-  return res.json(tweetsData);
+  tweetToFavorite.isAlreadyFavourite =! tweetToFavorite.isAlreadyFavourite
+ 
+  console.log(tweetToFavorite)
+  return res.json({
+    sucess: true,
+    message: "Tweet favourited"
+  });
 });
 
 /* This helper route allow us to change different route data methods 

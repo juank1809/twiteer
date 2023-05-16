@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useTweets } from "../../../context/TweetContext";
 import { ITweet } from "../../../types/tweet";
@@ -8,20 +8,49 @@ import { ITweet } from "../../../types/tweet";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 
 const FavoriteCount: React.FC<{ tweet: ITweet }> = ({
-  tweet: { id, favoriteCount },
+  tweet: {
+    id,
+    favoriteCount: firstFavoriteCount,
+    isAlreadyFavourite: isFirstAlreadyFavorite,
+  },
 }) => {
-  const [isAlreadyFavorite, setIsAlreadyFavorite] = useState(false);
+  const [isAlreadyFavorite, setIsAlreadyFavorite] = useState(
+    isFirstAlreadyFavorite
+  );
+  const [newFavoriteCount, setNewFavoriteCount] = useState(firstFavoriteCount);
+
+  const initialRender = useRef(true);
+
+  //Update tweet's count every time the user updates if this is them favorite tweet
+  useEffect(() => {
+    // This should not be fired at the first render
+
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
+    const shouldIncrement = isAlreadyFavorite;
+    setNewFavoriteCount((prev) => {
+      return shouldIncrement ? prev + 1 : prev - 1;
+    });
+  }, [isAlreadyFavorite]);
+
   const { incrementFavorite } = useTweets();
   const mutation = incrementFavorite();
-  const handleFavoriteClick = () => {
-    mutation.mutate(id);
-    console.log(mutation.isSuccess);
+
+  const handleFavoriteClick = async () => {
+    await mutation.mutateAsync(id);
+
     setIsAlreadyFavorite((prev) => !prev);
+
+    if (mutation.error) {
+      console.log("eddd");
+    }
   };
   return (
     <span
       title="favorite count"
-      onClick={() => handleFavoriteClick()}
+      onClick={handleFavoriteClick}
       className="flex text-gray items-center text-xs gap-1 cursor-pointer min-w-min"
     >
       <MdOutlineFavoriteBorder
@@ -30,7 +59,7 @@ const FavoriteCount: React.FC<{ tweet: ITweet }> = ({
       `}
       />
 
-      {favoriteCount}
+      {newFavoriteCount}
     </span>
   );
 };
