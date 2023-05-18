@@ -22,6 +22,7 @@
     "autoprefixer": "^10.4.14",
     "axios": "^1.3.4",
     "bluebird": "^3.7.2",
+    "design-system": "*",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.1",
     "next": "^13.3.1",

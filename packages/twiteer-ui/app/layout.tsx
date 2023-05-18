@@ -1,3 +1,5 @@
+import { Layout } from "design-system";
+
 export const metadata = {
   title: "Airbnb",
   description: "Airbnb Clone",
@@ -12,8 +14,7 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <div id="modals"></div>
-
-        {children}
+        <Layout>{children}</Layout>
       </body>
     </html>
   );
