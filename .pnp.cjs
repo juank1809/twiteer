@@ -25133,6 +25133,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.4.23"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:83f09892b32c11b14074f6daf77eb62a1df3a7437731bea9c3c1c8850082f04d4a2c7c8bc99fd70406a87396e65a946be53b389cc3722b3eb2e6e3482e645322#npm:18.2.0"],\
+            ["react-icons", "virtual:83f09892b32c11b14074f6daf77eb62a1df3a7437731bea9c3c1c8850082f04d4a2c7c8bc99fd70406a87396e65a946be53b389cc3722b3eb2e6e3482e645322#npm:4.8.0"],\
             ["tailwindcss", "npm:3.3.2"],\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"],\
             ["vite", "virtual:83f09892b32c11b14074f6daf77eb62a1df3a7437731bea9c3c1c8850082f04d4a2c7c8bc99fd70406a87396e65a946be53b389cc3722b3eb2e6e3482e645322#npm:4.3.7"]\
@@ -38067,6 +38068,19 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["react-icons", "virtual:6b82acf38ab7fd2d4444696caa7ca681c0219e3fa1d728de5191a3c7769366b859f16443932a8799c0af13c13072da5a06752ab0b4fb1aa322d7fe7240190293#npm:4.8.0"],\
             ["@types/react", "npm:18.0.38"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:83f09892b32c11b14074f6daf77eb62a1df3a7437731bea9c3c1c8850082f04d4a2c7c8bc99fd70406a87396e65a946be53b389cc3722b3eb2e6e3482e645322#npm:4.8.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-icons-virtual-1264c39a22/0/cache/react-icons-npm-4.8.0-aa5423cd6c-4dbba7ad98.zip/node_modules/react-icons/",\
+          "packageDependencies": [\
+            ["react-icons", "virtual:83f09892b32c11b14074f6daf77eb62a1df3a7437731bea9c3c1c8850082f04d4a2c7c8bc99fd70406a87396e65a946be53b389cc3722b3eb2e6e3482e645322#npm:4.8.0"],\
+            ["@types/react", "npm:18.2.6"],\
             ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
