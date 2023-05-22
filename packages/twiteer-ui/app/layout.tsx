@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <div id="modals"></div>
+        <div id="modals" />
         <Layout>{children}</Layout>
       </body>
     </html>

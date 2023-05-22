@@ -25,7 +25,7 @@
     "design-system": "*",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.1",
-    "next": "^13.3.1",
+    "next": "13.4.0",
     "normalize.css": "^8.0.1",
     "postcss": "^8.4.23",
     "rc-dropdown": "^4.0.1",
